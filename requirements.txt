@@ -1,1 +1,2 @@
-lista på alla libs etc som behöver laddas ner för att köra appen
+openai
+streamlit==1.27.2
