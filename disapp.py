@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
 import openai
+import gdown
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
