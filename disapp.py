@@ -5,7 +5,7 @@ import gdown
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
-@st.cache(show_spinner=True)
+@st.cache_data(show_spinner=True)
 def download_model(file_id, output):
     url = f'https://drive.google.com/uc?id={file_id}'
     gdown.download(url, output, quiet=False)
