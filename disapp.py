@@ -4,17 +4,17 @@ import openai
 #import gdown
 
 ##################################
-#import urllib.request
+import urllib.request
 
 # For saved_model.pk3
-#url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
-#filename1 = url1.split('/')[-1]
-#urllib.request.urlretrieve(url1, filename1)
+url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
+filename1 = url1.split('/')[-1]
+urllib.request.urlretrieve(url1, filename1)
 
 # For saved_model.pk4
-#url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
-#filename2 = url2.split('/')[-1]
-#urllib.request.urlretrieve(url2, filename2)
+url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
+filename2 = url2.split('/')[-1]
+urllib.request.urlretrieve(url2, filename2)
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
