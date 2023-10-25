@@ -28,8 +28,8 @@ model_file_id_1 = '1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
 model_file_id_2 = '1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
 
 # Paths to save the downloaded models
-##model_path_1 = 'saved_model.pk3'
-##model_path_2 = 'saved_model.pk4'
+model_path_1 = 'saved_model.pk3'
+model_path_2 = 'saved_model.pk4'
 
 # Download the model files
 download_model(model_file_id_1, model_path_1)
@@ -40,8 +40,8 @@ download_model(model_file_id_2, model_path_2)
 
 page = st.sidebar.selectbox("Choose a Tool", ["Home", "Classifier", "Disinfo", "GPT", "About"])
 
-model_path_1 = "saved_model.pk3"
-model_path_2 = "saved_model.pk4"
+#model_path_1 = "saved_model.pk3"
+#model_path_2 = "saved_model.pk4"
 
 if page == "Home": 
     st.title("Welcome")
