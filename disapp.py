@@ -36,9 +36,16 @@ urllib.request.urlretrieve(url2, filename2)
 #download_model(model_file_id_2, model_path_2)
 
 #################################
+####################
+# Set up OpenAI API key
+# REDACTED
+
+# Retrieve the OpenAI API key from Streamlit secrets
+api_key = st.secrets["openai"]["api_key"]
 
 # Set up OpenAI API key
-openai.api_key = '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'
+openai.api_key = api_key
+#####################
 
 page = st.sidebar.selectbox("Choose a Tool", ["Home", "Classifier", "Disinfo", "GPT", "About"])
 
@@ -323,7 +330,7 @@ if page == 'Disinfo':
 ##########################################################
 if page == "GPT":
     # Set up OpenAI API key
-    openai.api_key = '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'
+    # REDACTED
 
     st.title("Legal Framework Resource")
     left_column, right_column = st.columns([1,2])
