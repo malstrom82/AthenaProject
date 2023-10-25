@@ -4,36 +4,36 @@ import openai
 import gdown
 
 ##################################
-import urllib.request
+#import urllib.request
 
 # For saved_model.pk3
-url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
-filename1 = url1.split('/')[-1]
-urllib.request.urlretrieve(url1, filename1)
+#url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
+#filename1 = url1.split('/')[-1]
+#urllib.request.urlretrieve(url1, filename1)
 
 # For saved_model.pk4
-url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
-filename2 = url2.split('/')[-1]
-urllib.request.urlretrieve(url2, filename2)
+#url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
+#filename2 = url2.split('/')[-1]
+#urllib.request.urlretrieve(url2, filename2)
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
-#@st.cache_data(show_spinner=True)
-#def download_model(file_id, output):
-#    url = f'https://drive.google.com/uc?id={file_id}'
-#    gdown.download(url, output, quiet=False)
+@st.cache_data(show_spinner=True)
+def download_model(file_id, output):
+    url = f'https://drive.google.com/uc?id={file_id}'
+    gdown.download(url, output, quiet=False)
 
 ## Google Drive file IDs for your model files
-#model_file_id_1 = '1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
-#model_file_id_2 = '1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
+model_file_id_1 = '1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
+model_file_id_2 = '1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
 
 # Paths to save the downloaded models
-#model_path_1 = 'saved_model.pk3'
-#model_path_2 = 'saved_model.pk4'
+##model_path_1 = 'saved_model.pk3'
+##model_path_2 = 'saved_model.pk4'
 
 # Download the model files
-#download_model(model_file_id_1, model_path_1)
-#download_model(model_file_id_2, model_path_2)
+download_model(model_file_id_1, model_path_1)
+download_model(model_file_id_2, model_path_2)
 
 #################################
 
