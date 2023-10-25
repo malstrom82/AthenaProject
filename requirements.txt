@@ -2,3 +2,4 @@ openai
 streamlit==1.27.2
 joblib==1.2.0
 gdown
+scikit-learn
