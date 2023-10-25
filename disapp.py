@@ -2,10 +2,32 @@ import streamlit as st
 import joblib
 import openai
 
+##################################
+# Caching the download function ensures model files are only downloaded once
+@st.cache(show_spinner=True)
+def download_model(file_id, output):
+    url = f'https://drive.google.com/uc?id={file_id}'
+    gdown.download(url, output, quiet=False)
+
+# Google Drive file IDs for your model files
+model_file_id_1 = '1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
+model_file_id_2 = '1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
+
+# Paths to save the downloaded models
+model_path_1 = 'saved_model.pk3'
+model_path_2 = 'saved_model.pk4'
+
+# Download the model files
+download_model(model_file_id_1, model_path_1)
+download_model(model_file_id_2, model_path_2)
+
+#################################
+
+
 page = st.sidebar.selectbox("Choose a Tool", ["Home", "Classifier", "Disinfo", "GPT", "About"])
 
-Model_path_1 = "saved_model.pk3"
-Model_path_2 = "saved_model.pk4"
+#Model_path_1 = "saved_model.pk3"
+#Model_path_2 = "saved_model.pk4"
 
 if page == "Home": 
     st.title("Welcome")
@@ -45,7 +67,7 @@ if page == "Home":
 
 
 if page == "Classifier":
-    pipeline = joblib.load(Model_path_1)
+    pipeline = joblib.load(model_path_1)
     st.title("Article Credibility Analysis")
     # User input for article
     user_input = st.text_area("Enter an article:")
@@ -69,7 +91,7 @@ if page == "Classifier":
 
 if page == 'Disinfo':
     st.title("Disinformation Classifier")
-    pipeline = joblib.load(Model_path_2)
+    pipeline = joblib.load(model_path_2)
     
     # User input for article
     user_input = st.text_area("Enter an article:")
