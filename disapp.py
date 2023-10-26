@@ -551,8 +551,8 @@ if page == "Legal Helper":
 # Set up OpenAI API key
 # REDACTED
 
-st.title("Legal Framework Resource")
-st.write("This tool will help you get a better understanding of the EU legalization frameworks. Simply write your question about the documents in the box. By using Chat-GPT, it will scan through the legal documents and then provide an answer to your question.")
+    st.title("Legal Framework Resource")
+    st.write("This tool will help you get a better understanding of the EU legalization frameworks. Simply write your question about the documents in the box. By using Chat-GPT, it will scan through the legal documents and then provide an answer to your question.")
 
 left_column, right_column = st.columns([1,2])
 
