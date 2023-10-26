@@ -109,10 +109,10 @@ if page == "Credibility Checker":
     
     left_column, right_column = st.columns([1,2])
     st.set_option('deprecation.showPyplotGlobalUse', False)     ## gör denna nåt?
-with right_column:
+with left_column:
     st.image("textanalys.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
-    with left_column:
+    with right_column:
         artikel_input = st.text_input("Paste your article here:")
 
         col1, col2 = st.columns(2)
