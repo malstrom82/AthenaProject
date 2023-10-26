@@ -87,7 +87,7 @@ if page == "Home":
     
     st.write("**Misinformation**")
     st.write("“False or misleading content shared without intent to cause harm. However, its effects can still be harmful, e.g. when people share false information with friends and family in good faith.”")
-    st.write("[Learn more](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52020DC0790&from=EN")
+    st.write("[Learn more](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52020DC0790&from=EN)")
 
 
     st.write("**Disinformation**")
