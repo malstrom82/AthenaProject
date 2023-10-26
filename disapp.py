@@ -166,7 +166,7 @@ if page == "Credibility Checker":
                 st.write("Analysis not possible - no clear signs for or against this articles credibility. Human analysis needed")
                 clverdict = "Credibility Analysis Not Possible."
             elif proba_real > 0.6:
-                st.write("The provided article has been flagged as '**Probably Credible**'. The analysis is based on a Logistical Regression ML-model, trained on a database of known false and true news articles. \n\nThe model makes no analysis of author intent. It is also important to keep in mind that the models verdict is based on probabilities, and can not be used as the single source for judgement on an articles credibility.")
+                st.write("Important note: The model makes no analysis of author intent. It is also important to keep in mind that the models verdict is based on probabilities, and can not be used as the single source for judgement on an articles credibility.")
                 clverdict = "Probably Credible."
             else:
                 st.write("The provided article has been flagged as '**Probably Not Credible**'. \n\nThe analysis is based on a Logistical Regression ML-model, trained on a database of known false and true news articles. \n\nThe model makes no analysis of author intent. It is also important to keep in mind that the models verdict is based on probabilities, and can not be used as the single source for judgement on an articles credibility.")
