@@ -387,7 +387,7 @@ if page == "Legal Helper":
         #- [Metrics & Graphs](#)
         #- [About the App](#)
         #""")
-        st.info("This tool is here to help guide your deep journey into the magical world of EU legislation.\n\nSelect a specific legal framework to research below, or leave on 'Blank' to post  general question related to all relevant frameworks. \n\nThen select your level of expertise (Advanced - You have knowledge of key concepts and the relevant legal frameworks. Simplified - you want extra support in the answer). \n\nAfter this, send your question by pressing the button below.")
+        st.info("\n\nSelect a specific legal framework to research below, or leave on 'Blank' to post  general question related to all relevant frameworks. \n\nThen select your level of expertise (Advanced - You have knowledge of key concepts and the relevant legal frameworks. Simplified - you want extra support in the answer). \n\nAfter this, send your question by pressing the button below.")
         
         legal_frameworks = ["Blank", "GDPR", "AI Act", "NIS 2 Directive",
                             "2019 Cybersecurity Act", "e-Evidence Act", "Digital Service Act", "AI Liability Act"]
@@ -473,9 +473,7 @@ if page == "About":
     st.write("**Mistakes:** It wrongly called a real article \"fake\" 5.64% of the time. It wrongly called a fake article \"real\" 2.15% of the time.") # Used FPR and FNR here
     st.write("**Fairness:** Our model was consistent in its decisions, correctly identifying fake news 97.85% of the time across different articles.") # Used EO here
     st.write("**Trustworthiness:** If the model says an article is \"fake,\" it's right 94.89% of the time. If the model says an article is \"real,\" it's right 97.62% of the time.") # Used PPV and NPV here
-    st.image(image1)
-    st.write("""
-    Our news-checking model is reliable and fair in its predictions, but it's always wise to double-check news from other sources.
+    st.write("""Our news-checking model is reliable and fair in its predictions, but it's always wise to double-check news from other sources.
     """)
 
     st.subheader("Team Members")
