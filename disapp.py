@@ -105,7 +105,8 @@ if page == "Credibility Checker":
     st.title("Article Credibility Analysis")
     st.write("This is an AI-powered credibility application. Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. Learn more about the project in the about section.")
     st.write("Paste the body of an article you want to check if it is credible or not. A machine learning (ML) classifier will predict if the article is credible or not. And the OpenAI large language model will make further analysis and give you insights to fake news, misinformation and applicable legal frameworks.")
-   
+    st.write("Example 1: Paste an article or text you want to analyze, and press 'Analyze article'.\nExample 2: Together with your article, add the news outlet/source and author of the article, do get a deeper analysis.\nExample 3: If you only want a quick check on an author or source, enter them below and press 'Check only source' or 'Check only author'.")
+    
     left_column, right_column = st.columns([1,2])
     st.set_option('deprecation.showPyplotGlobalUse', False)     ## gör denna nåt?
 
