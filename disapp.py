@@ -56,7 +56,7 @@ if page == "Home":
     st.title("Athena-Disapp: Credibility assessment in your pocket")
     #st.image(imageb)
     st.write("""
-    Welcome to our digital suite, where we prioritize information integrity and transparency. Dive deep into our tools and combat disinformation, understand EU legal documents, or assess news authenticity.
+    Welcome to our digital suite, where we prioritize information integrity and transparency. Dive deep into our tools and combat disinformation, understand EU legal documents, or assess news authenticity.\n\nFollow the steps below to check an articles credibility, find possible signs of malintent, and get support on legal frameworks.\nOr use the tools separately - it's all up to you!
     """)
     st.header("FIMI")
     st.write("sdfhksjhfkj")
