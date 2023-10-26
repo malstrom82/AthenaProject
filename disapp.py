@@ -55,6 +55,29 @@ model_path_2 = "saved_model.pk4"
 if page == "Home": 
     st.title("Athena-Disapp: Credibility assessment in your pocket")
 
+        st.header("Tools & suggested workflow")
+
+    # Create three columns for the layout
+    col1, col2, col3 = st.columns(3)
+
+    # Content for Column 1 - Fake News App
+    with col1:
+        st.write("**Step 1 - Credibility Checker**")
+        st.info(""" A machine learning model trained on a large dataset predicts if an article is credible or not.
+       """)
+
+    # Content for Column 2 - Disinformation Checker
+    with col2:
+        st.write("**Step 2 - Disinformation Detector**")
+        st.info("""
+        A more experimental tool that will, with a machine learning model, classify whether a non-credible article is disinformation or misinformation.""")
+
+    # Content for Column 3 - EU Legal Document Chatbot
+    with col3:
+        st.write("**Step 3 - Legal Helper**")
+        st.info("""
+       Designed to provide better understanding of the EU legalization documents, such as the AI act or GDPR.""")
+
     st.header("FIMI and project")
     st.write("Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. This website aims to educate the user on Foreign information manipulation and interference (FIMI), misinformation, disinformation, the differences between them and a further look into the legislative frameworks adapted in the EU. Learn more about the project in the about section.")
     st.header("Glossary")
@@ -73,29 +96,6 @@ if page == "Home":
 
     st.write("**All this sounds like “fake news”, why the new words?**")
     st.write(" As we try to follow [EuvsDisinfo](https://euvsdisinfo.eu/) we do not use “Fake news” as a concept due to the strong political connotations to the phrase and that it is woefully inaccurate to describe the complexity of the issues at stake.")
-
-    st.header("Tools")
-
-    # Create three columns for the layout
-    col1, col2, col3 = st.columns(3)
-
-    # Content for Column 1 - Fake News App
-    with col1:
-        st.write("**Credibility analysis**")
-        st.info(""" A machine learning model trained on a large dataset predicts if an article is credible or not.
-       """)
-
-    # Content for Column 2 - Disinformation Checker
-    with col2:
-        st.write("**Disinformation classifier**")
-        st.info("""
-        A more experimental tool that will, with a machine learning model, classify whether a non-credible article is disinformation or misinformation.""")
-
-    # Content for Column 3 - EU Legal Document Chatbot
-    with col3:
-        st.write("**Legal chatbot**")
-        st.info("""
-       Designed to provide better understanding of the EU legalization documents, such as the AI act or GDPR.""")
 
     st.header("About")
     st.write("Here you can read more about the project, ATHENA, RISE our mastersprogram and our information if you have any questions.")
