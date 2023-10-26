@@ -191,10 +191,18 @@ if page == "Credibility Checker":
         # Handle main "Analyze" button press
     elif send_request:
         user_input = artikel_input
+        ################
+        # Call the load_models function ### cashad version
+        model1, model2 = load_models()
         
-        pipeline = joblib.load(model_path_1)            ## modellen
+        # Use the loaded model directly
+        pipeline = model1
         user_input_bow = pipeline.named_steps['bow'].transform([user_input])
         proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
+        ##############
+        #pipeline = joblib.load(model_path_1)            ## modellen
+        #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
+        #proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
     # Check the probability range
         if 0.4 <= proba_real <= 0.6:
             st.write("Analysis not possible - no clear signs for or against this articles credibility. Human analysis needed")
