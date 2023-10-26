@@ -649,39 +649,39 @@ with right_column:
 
 ##########################################################
 if page == "About":
-st.markdown("# About")
-st.subheader("The Project")
-st.write("""This Streamlit page is created for a project which is a part of the course "Introduction to Human-centered AI” at the University of Gothenburg. We've had the privilege to collaborate with the Research Institutes of Sweden (RISE) for this project. Our wish is to contribute to the recently initiated research initiative, ATHENA, carried out by RISE in collaboration with the European Union's institutions and research partners.""")
+    st.markdown("# About")
+    st.subheader("The Project")
+    st.write("""This Streamlit page is created for a project which is a part of the course "Introduction to Human-centered AI” at the University of Gothenburg. We've had the privilege to collaborate with the Research Institutes of Sweden (RISE) for this project. Our wish is to contribute to the recently initiated research initiative, ATHENA, carried out by RISE in collaboration with the European Union's institutions and research partners.""")
 
-st.subheader("ATHENA Project Details")
-st.write("""ATHENA stands for "An Exposition on Foreign Information Manipulation and Interference." It's a project by the European Union (EU) that includes 14 organizations from 11 countries. The research company Trilateral leads the project. Its main goal is to protect democratic processes in the European Union (EU) from foreign information manipulation and interference (FIMI).
-""")
-st.write("""The project uses machine learning algorithms, conducts field studies, and develops detection tools to help the EU find, study, and fight against FIMI. By creating these tools and understanding the impact of FIMI on society, ATHENA helps policymakers, businesses, and community groups take action against FIMI.""")
+    st.subheader("ATHENA Project Details")
+    st.write("""ATHENA stands for "An Exposition on Foreign Information Manipulation and Interference." It's a project by the European Union (EU) that includes 14 organizations from 11 countries. The research company Trilateral leads the project. Its main goal is to protect democratic processes in the European Union (EU) from foreign information manipulation and interference (FIMI).
+    """)
+    st.write("""The project uses machine learning algorithms, conducts field studies, and develops detection tools to help the EU find, study, and fight against FIMI. By creating these tools and understanding the impact of FIMI on society, ATHENA helps policymakers, businesses, and community groups take action against FIMI.""")
 
-st.subheader("The Machine Learning Model")
-st.write("**Article credibility analysis**")
-st.write("The ML classifier is based on logistic regression due to when cross-valuated this type of statistical model had the best accuracy scores for our type of dataset. The model is trained on the WELfake dataset (more information on WELfake [here](https://ieeexplore.ieee.org/document/9395133)), a large dataset of over 72 000 articles, half of the data is non-credible news and the other half is verified news. Our model is trained on 80% of the dataset and tested on the remaining 20%. When the model is trained the model gets the label (true or false) as well as the text of the articles. The model then predicts connections between these two and tests the predictions on the last 20% without adjusting, the model correctly assesses articles as non-credible or credible 96% of the time with a test of over 14 000 articles.")
-
-st.write("**Disinformation classifier**")
-st.write("The dataset used is a combination of the WELfake-dataset and a scraped version of the EUvsDisinfo-dataset (more information on WELfake [here] (https://ieeexplore.ieee.org/document/9395133) and EuvsDisinfo [here](https://euvsdisinfo.eu/disinformation-cases/)). The WELfake dataset has been reduced to only the non-credible articles and the number of articles has been balanced in to match the disinformation dataset of 15 000 articles. A total of 30 000 articles were used where 80% is a training set and 20% is the testing set. Reaching a testing accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” or “non-credible” by the creator of the WELfake dataset and could thereby be a mix of misinformation and disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
-
-st.write("**Machine Learning Model Metrics**")
-st.write("This time we have used the same dataset as the other classifier, but only used the articles labeled as misinformation. This misinformation dataset has then been combined with a disinformation dataset scraped from EuvsDisinfo database of 15 000 articles verified as disinformation. The dataset is then balanced so that a similar amount of articles is misinformation as well as disinformation. A total of 30 000 articles are used where 80% is a training set and 20% is the testing set. Reaching accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” and could thereby be a mix of misinformation as well as disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
-
-st.subheader("**Transparency Note**")
-st.write("As students of the University of Gothenburg's masters program “Human-centered AI” a central part of our project is a steadfast commitment to transparency. It's crucial for users to understand how our model works, its strengths, and its limitations. By being transparent about these details we can ensure that users have the necessary context to interpret the model's outputs.")
-
-st.write("**Learning Accuracy:** Our model correctly learned from the examples 99.9% of the time.")
-st.write("**Testing Accuracy:** On new articles, it correctly identified \"fake\" news 96.12% of the time.")
-st.write("**Mistakes:** It wrongly called a real article \"fake\" 5.64% of the time. It wrongly called a fake article \"real\" 2.15% of the time.") # Used FPR and FNR here
-st.write("**Fairness:** Our model was consistent in its decisions, correctly identifying fake news 97.85% of the time across different articles.") # Used EO here
-st.write("**Trustworthiness:** If the model says an article is \"fake,\" it's right 94.89% of the time. If the model says an article is \"real,\" it's right 97.62% of the time.") # Used PPV and NPV here
-st.write("""Our news-checking model is reliable and fair in its predictions, but it's always wise to double-check news from other sources.
-""")
-
-st.subheader("Team Members")
-st.write("- Jonathan Häggqvist: gushagjoah@student.gu.se")
-st.write("- Magnus Wahlström: gusmagnwah@student.gu.se")
-st.write("- Linus Zetterlund: guslinuze@student.gu.se")
-st.write("- Ebba Rydnell: gusrydeb@student.gu.se")
-st.write("For more about our MSc program, [you can check out the page for the program](https://www.gu.se/en/study-gothenburg/human-centered-artificial-intelligence-masters-programme-t2hai).")
+    st.subheader("The Machine Learning Model")
+    st.write("**Article credibility analysis**")
+    st.write("The ML classifier is based on logistic regression due to when cross-valuated this type of statistical model had the best accuracy scores for our type of dataset. The model is trained on the WELfake dataset (more information on WELfake [here](https://ieeexplore.ieee.org/document/9395133)), a large dataset of over 72 000 articles, half of the data is non-credible news and the other half is verified news. Our model is trained on 80% of the dataset and tested on the remaining 20%. When the model is trained the model gets the label (true or false) as well as the text of the articles. The model then predicts connections between these two and tests the predictions on the last 20% without adjusting, the model correctly assesses articles as non-credible or credible 96% of the time with a test of over 14 000 articles.")
+    
+    st.write("**Disinformation classifier**")
+    st.write("The dataset used is a combination of the WELfake-dataset and a scraped version of the EUvsDisinfo-dataset (more information on WELfake [here] (https://ieeexplore.ieee.org/document/9395133) and EuvsDisinfo [here](https://euvsdisinfo.eu/disinformation-cases/)). The WELfake dataset has been reduced to only the non-credible articles and the number of articles has been balanced in to match the disinformation dataset of 15 000 articles. A total of 30 000 articles were used where 80% is a training set and 20% is the testing set. Reaching a testing accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” or “non-credible” by the creator of the WELfake dataset and could thereby be a mix of misinformation and disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
+    
+    st.write("**Machine Learning Model Metrics**")
+    st.write("This time we have used the same dataset as the other classifier, but only used the articles labeled as misinformation. This misinformation dataset has then been combined with a disinformation dataset scraped from EuvsDisinfo database of 15 000 articles verified as disinformation. The dataset is then balanced so that a similar amount of articles is misinformation as well as disinformation. A total of 30 000 articles are used where 80% is a training set and 20% is the testing set. Reaching accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” and could thereby be a mix of misinformation as well as disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
+    
+    st.subheader("**Transparency Note**")
+    st.write("As students of the University of Gothenburg's masters program “Human-centered AI” a central part of our project is a steadfast commitment to transparency. It's crucial for users to understand how our model works, its strengths, and its limitations. By being transparent about these details we can ensure that users have the necessary context to interpret the model's outputs.")
+    
+    st.write("**Learning Accuracy:** Our model correctly learned from the examples 99.9% of the time.")
+    st.write("**Testing Accuracy:** On new articles, it correctly identified \"fake\" news 96.12% of the time.")
+    st.write("**Mistakes:** It wrongly called a real article \"fake\" 5.64% of the time. It wrongly called a fake article \"real\" 2.15% of the time.") # Used FPR and FNR here
+    st.write("**Fairness:** Our model was consistent in its decisions, correctly identifying fake news 97.85% of the time across different articles.") # Used EO here
+    st.write("**Trustworthiness:** If the model says an article is \"fake,\" it's right 94.89% of the time. If the model says an article is \"real,\" it's right 97.62% of the time.") # Used PPV and NPV here
+    st.write("""Our news-checking model is reliable and fair in its predictions, but it's always wise to double-check news from other sources.
+    """)
+    
+    st.subheader("Team Members")
+    st.write("- Jonathan Häggqvist: gushagjoah@student.gu.se")
+    st.write("- Magnus Wahlström: gusmagnwah@student.gu.se")
+    st.write("- Linus Zetterlund: guslinuze@student.gu.se")
+    st.write("- Ebba Rydnell: gusrydeb@student.gu.se")
+    st.write("For more about our MSc program, [you can check out the page for the program](https://www.gu.se/en/study-gothenburg/human-centered-artificial-intelligence-masters-programme-t2hai).")
