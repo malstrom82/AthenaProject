@@ -522,11 +522,11 @@ elif send_request:
     #    clverdict = "Not Credible"
 
 if page == 'Disinformation Detector':
-st.title("Disinformation classifier")
-st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation.") 
-st.write("Paste a non-credible article in the text box and the classifier will predict if the article is misinformation or disinformation. This is an experimental classifier and the results should be treated as experimental, learn more about this model on our about page.")
+    st.title("Disinformation classifier")
+    st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation.") 
+    st.write("Paste a non-credible article in the text box and the classifier will predict if the article is misinformation or disinformation. This is an experimental classifier and the results should be treated as experimental, learn more about this model on our about page.")
 
-pipeline = joblib.load(model_path_2)
+    pipeline = joblib.load(model_path_2)
 
 # User input for article
 user_input = st.text_area("Enter an article:")
