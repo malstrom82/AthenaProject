@@ -479,8 +479,8 @@ if page == "About":
     """)
 
     st.subheader("Team Members")
-    st.write("- Jonathan: gushagjoah@student.gu.se")
-    st.write("- Magnus: [Email/Contact]")
-    st.write("- Linus: guslinuze@student.gu.se")
-    st.write("- Ebba: gusrydeb@student.gu.se")
+    st.write("- Jonathan Häggqvist: gushagjoah@student.gu.se")
+    st.write("- Magnus Wahlström: gusmagnwah@student.gu.se")
+    st.write("- Linus Zetterlund: guslinuze@student.gu.se")
+    st.write("- Ebba Rydnell: gusrydeb@student.gu.se")
     st.write("For more about our MSc program, [you can check out the page for the program](https://www.gu.se/en/study-gothenburg/human-centered-artificial-intelligence-masters-programme-t2hai).")
