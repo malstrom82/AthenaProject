@@ -193,7 +193,7 @@ if page == "Credibility Checker":
         user_input = artikel_input
         ################
         # Call the load_models function ### cashad version
-        model1, model2 = load_models()
+        #model1, model2 = load_models()
         
         # Use the loaded model directly
         pipeline = model1
