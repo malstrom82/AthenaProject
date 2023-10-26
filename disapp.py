@@ -543,9 +543,13 @@ user_input = st.text_area("Enter an article:")
 # Add a "Send Question" button
 if st.button("Check article"):
     if user_input:
+        pipeline = model2
         user_input_bow = pipeline.named_steps['bow'].transform([user_input])
-# Get the probability for the real news (labeled as '0')
         proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
+        
+        #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
+        ## Get the probability for the real news (labeled as '0')
+        #proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
 
 # Check the probability range
         if 0.4 <= proba_real <= 0.6:
@@ -561,7 +565,7 @@ if page == "Legal Helper":
 # REDACTED
 
     st.title("Legal Framework Resource")
-    st.write(“This tool will help you better understand the EU legalization frameworks. Simply enter your question about the documents in the box. Based on our predefined prompts sent to Chat-GPT, it will scan the legal document(s) and provide an answer to your question.”)
+    st.write("This tool will help you better understand the EU legalization frameworks. Simply enter your question about the documents in the box. Based on our predefined prompts sent to Chat-GPT, it will scan the legal document(s) and provide an answer to your question.")
 
 
 left_column, right_column = st.columns([1,2])
