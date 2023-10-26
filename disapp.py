@@ -47,13 +47,13 @@ api_key = st.secrets["openai"]["api_key"]
 openai.api_key = api_key
 #####################
 
-page = st.sidebar.selectbox("Choose a Tool", ["Home", "Classifier", "Disinfo", "GPT", "About"])
+page = st.sidebar.selectbox("Choose a Tool", ["Home", "Credibility Checker", "Disinformation Detector", "Legal Helper", "About"])
 
 model_path_1 = "saved_model.pk3"
 model_path_2 = "saved_model.pk4"
 
 if page == "Home": 
-    st.title("Welcome")
+    st.title("Athena-Disapp: Credibility assessment in your pocket")
     #st.image(imageb)
     st.write("""
     Welcome to our digital suite, where we prioritize information integrity and transparency. Dive deep into our tools and combat disinformation, understand EU legal documents, or assess news authenticity.
@@ -69,35 +69,32 @@ if page == "Home":
 
     # Content for Column 1 - Fake News App
     with col1:
-        st.write("**Fake News App**")
+        st.write("**Step 1 - Credibility Checker**")
         st.info("""
-        Our Fake News App is designed to provide a quick check on news articles or snippets. Simply input your text, and our AI will analyze its authenticity, providing an assessment based on trusted sources and patterns of misinformation.
+        The Athena-Disapp is designed to provide a quick check on news articles or snippets. Simply input your text, and our AI will analyze its credibility, providing an assessment based on trusted sources and patterns of misinformation.
         """)
 
 
-    # Content for Column 2 - Disinformation Checker
+    # Content for Column 2 - Disinformation Detector
     with col2:
-        st.write("**Disinformation Checker**")
+        st.write("**Step 2 - Disinformation Detector**")
         st.info("""
-        The digital age is rife with misleading content. Our Disinformation Checker swiftly identifies falsehoods. Upload content, and our system quickly discerns the factual from the fabricated, ensuring you only absorb trustworthy information.""")
+        The digital age is rife with misleading content. If a non credible article has been found, our Disinformation Checker swiftly identifies signs of malintent, or if it rather seems like a case of misinformation with no bad intent. Upload content, and our system quickly discerns the factual from the fabricated, ensuring you only absorb trustworthy information.""")
 
 
     # Content for Column 3 - EU Legal Document Chatbot
     with col3:
-        st.write("**EU Legal Document Chatbot**")
+        st.write("**Step 3 - EU Legal Document Chatbot**")
         st.info("""
-        EU legal documents are known for their complexity. With our EU Legal Document Chatbot, demystifying these texts becomes seamless. Input text or ask questions, and get concise explanations, making legal intricacies easier to grasp.""")
+        EU legal documents are known for their complexity. With our EU Legal Document Chatbot, demystifying these texts becomes seamless. After finding a non credible text, that bare signs of malintent and disinformation, ask questions/chat with legal documents and get concise explanations on how your case relates to regulation, making legal intricacies easier to grasp.""")
 
 
-if page == "Classifier":
+if page == "Credibility Checker":
     st.title("Article Credibility Analysis")
     left_column, right_column = st.columns([1,2])
-    classifiersvar = "True"       # temp
     st.set_option('deprecation.showPyplotGlobalUse', False)     ## gör denna nåt?
 
     with right_column:
-        #mlverdict = classifiersvar ## temp for classifier
-        
         artikel_input = st.text_input("Paste your article here:")
 
         col1, col2 = st.columns(2)
@@ -232,16 +229,16 @@ if page == "Classifier":
                     "content": "After analysis, aggregate the 'likely true' and 'likely false' verdicts for a summarized result. Example: 'After assessing all metrics, the content appears likely true/mostly false.'"
                 },
                 {"role": "system",
-                    "content": "Always include a Summary-section (after Analysis, before Legality): 'Summary: After assessing all metrics, the content appears likely true/mostly false.'. In the summary, analyse all the results from the analysis section, and combine the results into a final verdict. Always include either 'Based on the full analysis, the article is most likely true', 'Based on the full analysis, the article is most likely false' or a neutral similar answer, if analysis did not provide strong fake/real info."
+                    "content": "Always include a Summary-section (after Analysis, before Legality): 'Summary: After assessing all metrics, the content appears to be likely credible/most likely not credible.'. In the summary, analyse all the results from the analysis section, and combine the results into a final verdict. Always include either 'Based on the full analysis, the article is most likely **credible**' and provide your reasoning for this, or 'Based on the full analysis, the article is most likely **not credible**' with your motivation, or a neutral similar answer, if analysis did not provide strong fake/real info."
                 },
                 {"role": "system",
-                    "content": "In the summary section, when you assess all analytic metrics, give the result from the ML classifier the most weight. Use the other metrics to support the ML classifier, or to question it's accuracy, if all other metrics diverge from the classifier verdict in their verdicts."
+                    "content": "In the summary section, when you assess all analytic metrics and give your final summarized verdict of credible/not credible, give the result from the ML classifier the most weight. Use the other metrics to support the ML classifier, or to question it's accuracy, if all other metrics diverge from the classifier verdict in their verdicts."
                 },
                 {"role": "system",
                     "content": "For legality, reference these frameworks: GDPR, AI Act, NIS 2 Directive, 2019 Cybersecurity Act, e-Evidence Act, Digital Service Act, AI Liability Act. Include other relevant EU frameworks only when pertinent. if the text does not relate in any way to one or more legal frameworks, leave the Legality-section empty, with the text 'No relevant connections found to known EU legal frameworks.'."
                 },
                 {"role": "system",
-                    "content": "Always end your response with a disclaimer-section: 'Disclaimer: Labeling an article as 'fake' or 'real'/credible or not credible is provisional due to inherent uncertainties. Consult multiple methods for credibility assessment. If deemed 'fake', recognize the broader societal and individual implications of disinformation. For suspected disinformation, provide avenues for reporting this.'"
+                    "content": "Always end your response with a disclaimer-section: 'Disclaimer: Labeling an article as 'fake' or 'real'/credible or not credible is provisional due to inherent uncertainties. Consult multiple methods for any credibility assessment.'.  If deemed 'fake', mention the broader societal and individual implications of disinformation. For suspected disinformation, provide avenues for reporting this to relevant authorities."
                 },
                 {"role": "system",
                     "content": "If external sources are consulted or utilized, list them comprehensively at the end of your response. If none are used, state this."
@@ -305,8 +302,8 @@ if page == "Classifier":
                 #st.write("The provided article has been flagged as '**Probably Not Credible**'. \n\nThe analysis is based on a Logistical Regression ML-model, trained on a database of known false and true news articles. \n\nThe model makes no analysis of author intent. It is also important to keep in mind that the models verdict is based on probabilities, and can not be used as the single source for judgement on an articles credibility.")
             #    clverdict = "Not Credible"
 
-if page == 'Disinfo':
-    st.title("Disinformation Classifier")
+if page == 'Disinformation Detector':
+    st.title("Disinformation Detector")
     pipeline = joblib.load(model_path_2)
     
     # User input for article
@@ -328,7 +325,7 @@ if page == 'Disinfo':
                 st.write("This article has been flagged as **Misinformation**. \n\nThis means that the classifier found high similarity between the article and other articles known to be misinformation. \n\nThe difference between disinformation and misinformation has to do with author intent. The classification of this article indicate **low** probability of author malintent.\n\nIt is important to keep in mind that this classification is based on probabilities and similarity to historical articles, and does no analysis on actual author intent. An ML-classifier should never be used as the sole source of decisions.")
 
 ##########################################################
-if page == "GPT":
+if page == "Legal Helper":
     # Set up OpenAI API key
     # REDACTED
 
