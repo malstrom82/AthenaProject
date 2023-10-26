@@ -54,43 +54,56 @@ model_path_2 = "saved_model.pk4"
 
 if page == "Home": 
     st.title("Athena-Disapp: Credibility assessment in your pocket")
-    #st.image(imageb)
-    st.write("""
-    Welcome to our digital suite, where we prioritize information integrity and transparency. Dive deep into our tools and combat disinformation, understand EU legal documents, or assess news authenticity.
-    """)
-    st.header("FIMI")
-    st.write("sdfhksjhfkj")
-    st.header("Tools")
+    st.header("FIMI and project")
+    st.write("Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. This website aims to educate the user on Foreign information manipulation and interference (FIMI), misinformation, disinformation, the differences between them and a further look into the legislative frameworks adapted in the EU. Learn more about the project in the about section.")
+    st.header("Glossary")
+    st.write("**Foreign information manipulation and interference (FIMI)**")
+    st.write("“A pattern of behavior in the information domain that threatens values, procedures and political processes. Such activity is manipulative (though usually not illegal), conducted in an intentional and coordinated manner, often in relation to other hybrid activities. It can be pursued by state or non-state actors and their proxies.”")
+    st.write("[Learn more](https://www.eeas.europa.eu/eeas/tackling-disinformation-foreign-information-manipulation-interference_en)")
+    
+    st.write("**Misinformation**")
+    st.write("“False or misleading content shared without intent to cause harm. However, its effects can still be harmful, e.g. when people share false information with friends and family in good faith.”")
+    st.write("[Learn more](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52020DC0790&from=EN")
 
+    st.write("**Disinformation**")
+    st.write("“False or misleading content that is created, presented and disseminated with an intention to deceive or secure economic or political gain and which may cause public harm. Disinformation does not include errors, satire and parody, or clearly identified partisan news and commentary.”")
+    st.write("[Learn more](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52020DC0790&from=EN)")
+
+    st.write("**All this sounds like “fake news”, why the new words?**")
+    st.write(" As we try to follow [EuvsDisinfo](https://euvsdisinfo.eu/) we do not use “Fake news” as a concept due to the strong political connotations to the phrase and that it is woefully inaccurate to describe the complexity of the issues at stake.")
+
+    st.header("Tools")
 
     # Create three columns for the layout
     col1, col2, col3 = st.columns(3)
 
-
     # Content for Column 1 - Fake News App
     with col1:
-        st.write("**Step 1 - Credibility Checker**")
-        st.info("""
-        The Athena-Disapp is designed to provide a quick check on news articles or snippets. Simply input your text, and our AI will analyze its credibility, providing an assessment based on trusted sources and patterns of misinformation.
-        """)
+        st.write("**Credibility analysis**")
+        st.info(""" A machine learning model trained on a large dataset predicts if an article is credible or not.
+       """)
 
-
-    # Content for Column 2 - Disinformation Detector
+    # Content for Column 2 - Disinformation Checker
     with col2:
-        st.write("**Step 2 - Disinformation Detector**")
+        st.write("**Disinformation classifier**")
         st.info("""
-        The digital age is rife with misleading content. If a non credible article has been found, our Disinformation Checker swiftly identifies signs of malintent, or if it rather seems like a case of misinformation with no bad intent. Upload content, and our system quickly discerns the factual from the fabricated, ensuring you only absorb trustworthy information.""")
-
+        A more experimental tool that will, with a machine learning model, classify whether a non-credible article is disinformation or misinformation.""")
 
     # Content for Column 3 - EU Legal Document Chatbot
     with col3:
-        st.write("**Step 3 - EU Legal Document Chatbot**")
+        st.write("**Legal chatbot**")
         st.info("""
-        EU legal documents are known for their complexity. With our EU Legal Document Chatbot, demystifying these texts becomes seamless. After finding a non credible text, that bare signs of malintent and disinformation, ask questions/chat with legal documents and get concise explanations on how your case relates to regulation, making legal intricacies easier to grasp.""")
+       Designed to provide better understanding of the EU legalization documents, such as the AI act or GDPR.""")
+
+    st.header("About")
+    st.write("Here you can read more about the project, ATHENA, RISE our mastersprogram and our information if you have any questions.")
 
 
 if page == "Credibility Checker":
     st.title("Article Credibility Analysis")
+    st.write("This is an AI-powered credibility application. Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. Learn more about the project in the about section.")
+    st.write("Paste the body of an article you want to check if it is credible or not. A machine learning (ML) classifier will predict if the article is credible or not. And the OpenAI large language model will make further analysis and give you insights to fake news, misinformation and applicable legal frameworks.")
+   
     left_column, right_column = st.columns([1,2])
     st.set_option('deprecation.showPyplotGlobalUse', False)     ## gör denna nåt?
 
@@ -303,7 +316,10 @@ if page == "Credibility Checker":
             #    clverdict = "Not Credible"
 
 if page == 'Disinformation Detector':
-    st.title("Disinformation Detector")
+    st.title("Disinformation classifier")
+    st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation.") 
+    st.write("Paste a non-credible article in the text box and the classifier will predict if the article is misinformation or disinformation. This is an experimental classifier and the results should be treated as experimental, learn more about this model on our about page.")
+    
     pipeline = joblib.load(model_path_2)
     
     # User input for article
@@ -330,6 +346,8 @@ if page == "Legal Helper":
     # REDACTED
 
     st.title("Legal Framework Resource")
+    st.write("This tool will help you get a better understanding of the EU legalization frameworks. Simply write your question about the documents in the box. By using Chat-GPT, it will scan through the legal documents and then provide an answer to your question.")
+ 
     left_column, right_column = st.columns([1,2])
 
     # Sample dictionary containing framework to website mapping
@@ -424,45 +442,42 @@ if page == "Legal Helper":
 
 
 ##########################################################
-if page == "About": 
-    st.header("About")
+if page == "About":
+    st.markdown("# About")
     st.subheader("The Project")
-    st.write("""
-        This Streamlit page is created for a project which is a part of the course "Introduction to Human-centered AI” at the University of Gothenburg. We've had the privilege to collaborate with the Research Institutes of Sweden (RISE) for this project. Our wish is to contribute to the recently initiated research initiative, ATHENA, carried out by RISE in collaboration with the European Union's institutions and research partners.
-    """)
+    st.write("""This Streamlit page is created for a project which is a part of the course "Introduction to Human-centered AI” at the University of Gothenburg. We've had the privilege to collaborate with the Research Institutes of Sweden (RISE) for this project. Our wish is to contribute to the recently initiated research initiative, ATHENA, carried out by RISE in collaboration with the European Union's institutions and research partners.""")
 
     st.subheader("ATHENA Project Details")
-    st.write("""
-    ATHENA (An exposition on the foreign information manipulation and interference) is an EU project comprising 14 organizations from 11 countries, led by Trilateral, a UK-based research company. Its core mission is to safeguard democratic processes in the European Union (EU) from foreign information manipulation and interference (FIMI).
+    st.write("""ATHENA stands for "An Exposition on Foreign Information Manipulation and Interference." It's a project by the European Union (EU) that includes 14 organizations from 11 countries. The research company Trilateral leads the project. Its main goal is to protect democratic processes in the European Union (EU) from foreign information manipulation and interference (FIMI).
     """)
-    st.write("""
-    Through a combination of machine-learning algorithms, field studies, and cutting-edge detection tools, the project aims to extend the solution-space for policymakers, private stakeholders, and civil society actors to counteract FIMI.
-    """)
-    st.write("""
-    Given the evolving tactics, techniques, and procedures (TTPs) of adversaries, ATHENA aspires to bolster EU's capability to counteract influence operations. This is achieved through a suite of tools, including a unique knowledge graph, toolbox, and dashboard, developed in tandem with law enforcement authorities, policymakers, CSOs, and the media.
-    """)
-    st.write("There are five core objectives to the project, represented in this image:")
+    st.write("""The project uses machine learning algorithms, conducts field studies, and develops detection tools to help the EU find, study, and fight against FIMI. By creating these tools and understanding the impact of FIMI on society, ATHENA helps policymakers, businesses, and community groups take action against FIMI.""")
+    
+    st.subheader("The Machine Learning Model")
+    st.write("**Article credibility analysis**")
+    st.write("The ML classifier is based on logistic regression due to when cross-valuated this type of statistical model had the best accuracy scores for our type of dataset. The model is trained on the WELfake dataset (more information on WELfake [here](https://ieeexplore.ieee.org/document/9395133)), a large dataset of over 72 000 articles, half of the data is non-credible news and the other half is verified news. Our model is trained on 80% of the dataset and tested on the remaining 20%. When the model is trained the model gets the label (true or false) as well as the text of the articles. The model then predicts connections between these two and tests the predictions on the last 20% without adjusting, the model correctly assesses articles as non-credible or credible 96% of the time with a test of over 14 000 articles.")
 
-    st.subheader("Machine Learning Model Metrics")
-    st.write("**Transparency Note**")
-    st.write("As students of the university of Gothenburg's masters program “Human-centered AI” a central part of our project is a steadfast commitment to transparency. It's crucial for users to understand how our model works, its strengths, and its limitations. By being transparent about these details we can ensure that users have the necessary context to interpret the model's outputs.")
+    st.write("**Disinformation classifier**")
+    st.write("The dataset used is a combination of the WELfake-dataset and a scraped version of the EUvsDisinfo-dataset (more information on WELfake [here] (https://ieeexplore.ieee.org/document/9395133) and EuvsDisinfo [here](https://euvsdisinfo.eu/disinformation-cases/)). The WELfake dataset has been reduced to only the non-credible articles and the number of articles has been balanced in to match the disinformation dataset of 15 000 articles. A total of 30 000 articles were used where 80% is a training set and 20% is the testing set. Reaching a testing accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” or “non-credible” by the creator of the WELfake dataset and could thereby be a mix of misinformation and disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
+
+    st.write("**Machine Learning Model Metrics**")
+    st.write("This time we have used the same dataset as the other classifier, but only used the articles labeled as misinformation. This misinformation dataset has then been combined with a disinformation dataset scraped from EuvsDisinfo database of 15 000 articles verified as disinformation. The dataset is then balanced so that a similar amount of articles is misinformation as well as disinformation. A total of 30 000 articles are used where 80% is a training set and 20% is the testing set. Reaching accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” and could thereby be a mix of misinformation as well as disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
+
+    st.subheader("**Transparency Note**")
+    st.write("As students of the University of Gothenburg's masters program “Human-centered AI” a central part of our project is a steadfast commitment to transparency. It's crucial for users to understand how our model works, its strengths, and its limitations. By being transparent about these details we can ensure that users have the necessary context to interpret the model's outputs.")
+    
     st.write("**Learning Accuracy:** Our model correctly learned from the examples 99.9% of the time.")
     st.write("**Testing Accuracy:** On new articles, it correctly identified \"fake\" news 96.12% of the time.")
     st.write("**Mistakes:** It wrongly called a real article \"fake\" 5.64% of the time. It wrongly called a fake article \"real\" 2.15% of the time.") # Used FPR and FNR here
     st.write("**Fairness:** Our model was consistent in its decisions, correctly identifying fake news 97.85% of the time across different articles.") # Used EO here
     st.write("**Trustworthiness:** If the model says an article is \"fake,\" it's right 94.89% of the time. If the model says an article is \"real,\" it's right 97.62% of the time.") # Used PPV and NPV here
-
+    st.image(image1)
     st.write("""
     Our news-checking model is reliable and fair in its predictions, but it's always wise to double-check news from other sources.
     """)
 
-
-
-
     st.subheader("Team Members")
-    st.write("- Jonathan: [Email/Contact]")
+    st.write("- Jonathan: gushagjoah@student.gu.se")
     st.write("- Magnus: [Email/Contact]")
-    st.write("- Linus: [Email/Contact]")
-    st.write("- Ebba: [Email/Contact]")
-    st.write(
-        "For more about our MSc program, [you can check out the page for the program](https://www.gu.se/en/study-gothenburg/human-centered-artificial-intelligence-masters-programme-t2hai).")
+    st.write("- Linus: guslinuze@student.gu.se")
+    st.write("- Ebba: gusrydeb@student.gu.se")
+    st.write("For more about our MSc program, [you can check out the page for the program](https://www.gu.se/en/study-gothenburg/human-centered-artificial-intelligence-masters-programme-t2hai).")
