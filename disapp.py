@@ -110,10 +110,10 @@ if page == "Credibility Checker":
     #left_column, right_column = st.columns([1,2])
     #st.set_option('deprecation.showPyplotGlobalUse', False)     ## gör denna nåt?
     #with left_column:
-        st.image("textanalys.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+    st.image("textanalys.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
     #with right_column:
-        artikel_input = st.text_input("Paste your article here:", help="help me please")
+    artikel_input = st.text_input("Paste your article here:", help="help me please")
 
       #  col1, col2 = st.columns(2)
       #  source_input = col1.text_input("For deeper analysis, paste the news outlet or source here (optional):")
@@ -123,14 +123,14 @@ if page == "Credibility Checker":
         #author_input = col3.text_input("For deeper analysis, paste the author name here (optional):")
         #send_author_button = col4.button("Check only author")
      
-        source_input = text_input("For deeper analysis, paste the news outlet or source here (optional):")
-        send_source_button = button("Check only source")
+    source_input = text_input("For deeper analysis, paste the news outlet or source here (optional):")
+    send_source_button = button("Check only source")
 
-        author_input = text_input("For deeper analysis, paste the author name here (optional):")
-        send_author_button = col4.button("Check only author")
+    author_input = text_input("For deeper analysis, paste the author name here (optional):")
+    send_author_button = col4.button("Check only author")
         
         
-        send_request = st.button("Analyze article")
+    send_request = st.button("Analyze article")
 
         # Handle "Send Source" button press
         if send_source_button:
