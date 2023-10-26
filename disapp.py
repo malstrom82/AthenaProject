@@ -105,7 +105,7 @@ if page == "Credibility Checker":
         author_input = col3.text_input("For deeper analysis, paste the author name here (optional):")
         send_author_button = col4.button("Check only author")
         
-        send_request = st.button("Analyze article together with optionals")
+        send_request = st.button("Analyze article")
 
         # Handle "Send Source" button press
         if send_source_button:
