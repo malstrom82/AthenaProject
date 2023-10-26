@@ -134,6 +134,7 @@ if page == "Credibility Checker":
     st.title("Article Credibility Analysis")
     st.write("This is an AI-powered credibility application. Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. Learn more about the project in the about section.")
     st.write("Paste the body of an article you want to check if it is credible or not. A machine learning (ML) classifier will predict if the article is credible or not. And the OpenAI large language model will make further analysis and give you insights to fake news, misinformation and applicable legal frameworks.")
+    st.write("For the analysis of the text, ChatGPT was utilized. Customizing prompts enabled the extraction of specific analytical insights from the verdict. The machine learning (ML) verdict is integrated within the prompt messages, holding the highest value. ChatGPT operates based on information available up to January 2022.")
     st.write("Option 1: Paste an article or text you want to analyze, and press 'Analyze article'.\n\nOption 2: Together with your article, add the news outlet/source and author of the article, do get a deeper analysis.\n\nOption 3: If you only want a quick check on an author or source, enter them below and press 'Check only source' or 'Check only author'.")
     
     left_column, right_column = st.columns([1,2])
@@ -552,7 +553,8 @@ if page == "Legal Helper":
 # REDACTED
 
     st.title("Legal Framework Resource")
-    st.write("This tool will help you get a better understanding of the EU legalization frameworks. Simply write your question about the documents in the box. By using Chat-GPT, it will scan through the legal documents and then provide an answer to your question.")
+    st.write(“This tool will help you better understand the EU legalization frameworks. Simply enter your question about the documents in the box. Based on our predefined prompts sent to Chat-GPT, it will scan the legal document(s) and provide an answer to your question.”)
+
 
 left_column, right_column = st.columns([1,2])
 
@@ -659,17 +661,16 @@ if page == "About":
     st.write("""The project uses machine learning algorithms, conducts field studies, and develops detection tools to help the EU find, study, and fight against FIMI. By creating these tools and understanding the impact of FIMI on society, ATHENA helps policymakers, businesses, and community groups take action against FIMI.""")
 
     st.subheader("The Machine Learning Model")
+    st.write(“We experimented with three different models before making a final decision on which one to choose. Ultimately, we selected the Logistic Regression model, while also testing the k-NN (k-Nearest Neighbors) and Naive Bayes models. We evaluated each model both with and without applying the Bag of Words (BoW) technique. Additionally, we performed cross-validation on all models to ensure we selected the one with the highest performance score.”)
+
     st.write("**Article credibility analysis**")
     st.write("The ML classifier is based on logistic regression due to when cross-valuated this type of statistical model had the best accuracy scores for our type of dataset. The model is trained on the WELfake dataset (more information on WELfake [here](https://ieeexplore.ieee.org/document/9395133)), a large dataset of over 72 000 articles, half of the data is non-credible news and the other half is verified news. Our model is trained on 80% of the dataset and tested on the remaining 20%. When the model is trained the model gets the label (true or false) as well as the text of the articles. The model then predicts connections between these two and tests the predictions on the last 20% without adjusting, the model correctly assesses articles as non-credible or credible 96% of the time with a test of over 14 000 articles.")
     
     st.write("**Disinformation classifier**")
     st.write("The dataset used is a combination of the WELfake-dataset and a scraped version of the EUvsDisinfo-dataset (more information on WELfake [here] (https://ieeexplore.ieee.org/document/9395133) and EuvsDisinfo [here](https://euvsdisinfo.eu/disinformation-cases/)). The WELfake dataset has been reduced to only the non-credible articles and the number of articles has been balanced in to match the disinformation dataset of 15 000 articles. A total of 30 000 articles were used where 80% is a training set and 20% is the testing set. Reaching a testing accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” or “non-credible” by the creator of the WELfake dataset and could thereby be a mix of misinformation and disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
     
-    st.write("**Machine Learning Model Metrics**")
-    st.write("This time we have used the same dataset as the other classifier, but only used the articles labeled as misinformation. This misinformation dataset has then been combined with a disinformation dataset scraped from EuvsDisinfo database of 15 000 articles verified as disinformation. The dataset is then balanced so that a similar amount of articles is misinformation as well as disinformation. A total of 30 000 articles are used where 80% is a training set and 20% is the testing set. Reaching accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” and could thereby be a mix of misinformation as well as disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
-    
     st.subheader("**Transparency Note**")
-    st.write("As students of the University of Gothenburg's masters program “Human-centered AI” a central part of our project is a steadfast commitment to transparency. It's crucial for users to understand how our model works, its strengths, and its limitations. By being transparent about these details we can ensure that users have the necessary context to interpret the model's outputs.")
+    st.write("As students of the University of Gothenburg's masters program “Human-centered AI” a central part of our project is a steadfast commitment to transparency. It's crucial for users to understand how our model works, its strengths, and its limitations. By being transparent about these details we can ensure that users have the necessary context to interpret the model's outputs. Below you can read further into our metrics on our “article credibility analysis model:")
     
     st.write("**Learning Accuracy:** Our model correctly learned from the examples 99.9% of the time.")
     st.write("**Testing Accuracy:** On new articles, it correctly identified \"fake\" news 96.12% of the time.")
