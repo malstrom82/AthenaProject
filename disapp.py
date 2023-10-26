@@ -158,19 +158,19 @@ if page == "Credibility Checker":
     send_request = st.button("Analyze article")
 
         # Handle "Send Source" button press
-        if send_source_button:
-            messages = [
+    if send_source_button:
+        messages = [
                 # ... messages tailored for source analysis ...
                 {"role": "system", "content": f"Your role is to nalyze the provided source/news outlet: {source_input} for credibility, in terms of previous articles and publications, and connections to fake news or disinformation."},
                 {"role": "system", "content": "Use your knowledge about the source, and give a description of the source, and in what way it can be tied to fake news or disinformation, or if the source can be seen as credible. Motivate your answer, and make sure to mention the source by name in your response."},
-            ]
-            completion = openai.ChatCompletion.create(
+        ]
+        completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=messages,
                 temperature=0.3
-            )
-            response = completion.choices[0].message.content
-            right_column.write(response)
+        )
+        response = completion.choices[0].message.content
+        right_column.write(response)
 
         # Handle "Send Author" button press
         elif send_author_button:
