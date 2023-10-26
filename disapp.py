@@ -113,7 +113,7 @@ if page == "Credibility Checker":
         st.image("textanalys.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
     with right_column:
-        artikel_input = st.text_input("Paste your article here:")
+        artikel_input = st.text_input("Paste your article here:", help("help me please"))
 
         col1, col2 = st.columns(2)
         source_input = col1.text_input("For deeper analysis, paste the news outlet or source here (optional):")
