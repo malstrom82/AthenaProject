@@ -136,27 +136,23 @@ if page == "Credibility Checker":
     st.write("Paste the body of an article you want to check if it is credible or not. A machine learning (ML) classifier will predict if the article is credible or not. And the OpenAI large language model will make further analysis and give you insights to fake news, misinformation and applicable legal frameworks.")
     st.write("Option 1: Paste an article or text you want to analyze, and press 'Analyze article'.\n\nOption 2: Together with your article, add the news outlet/source and author of the article, do get a deeper analysis.\n\nOption 3: If you only want a quick check on an author or source, enter them below and press 'Check only source' or 'Check only author'.")
     
-    #left_column, right_column = st.columns([1,2])
+    left_column, right_column = st.columns([1,2])
     #st.set_option('deprecation.showPyplotGlobalUse', False)     ## gör denna nåt?
-    #with left_column:
+    with left_column:
     st.image("textanalys.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
-    #with right_column:
-    artikel_input = st.text_input("Paste your article here:", help="help me please")
+    with right_column:
+        artikel_input = st.text_input("Paste your article here:", help="help me please")
 
-      #  col1, col2 = st.columns(2)
-      #  source_input = col1.text_input("For deeper analysis, paste the news outlet or source here (optional):")
-      #  send_source_button = col2.button("Check only source")
+        col1, col2 = st.columns(2)
+        source_input = col1.text_input("For deeper analysis, paste the news outlet or source here (optional):")
+        send_source_button = col2.button("Check only source")
 
-       # col3, col4 = st.columns(2)
-        #author_input = col3.text_input("For deeper analysis, paste the author name here (optional):")
-        #send_author_button = col4.button("Check only author")
+        col3, col4 = st.columns(2)
+        author_input = col3.text_input("For deeper analysis, paste the author name here (optional):")
+        send_author_button = col4.button("Check only author")
      
-    source_input = text_input("For deeper analysis, paste the news outlet or source here (optional):")
-    send_source_button = button("Check only source")
-
-    author_input = text_input("For deeper analysis, paste the author name here (optional):")
-    send_author_button = col4.button("Check only author")
+   
         
         
     send_request = st.button("Analyze article")
