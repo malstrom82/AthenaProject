@@ -130,7 +130,7 @@ if page == "Credibility Checker":
     send_author_button = col4.button("Check only author")
         
         
-send_request = st.button("Analyze article")
+    send_request = st.button("Analyze article")
 
     # Handle "Send Source" button press
     if send_source_button:
