@@ -325,7 +325,7 @@ if page == "Credibility Checker":
 
         response = completion.choices[0].message.content
         right_column.write(response)
-=======
+#=======
 # Handle "Send Source" button press
 if send_source_button:
     messages = [
