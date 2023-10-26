@@ -60,7 +60,7 @@ if page == "Home":
     """)
     st.header("FIMI")
     st.write("sdfhksjhfkj")
-    st.header("Tools")
+    st.header("Tools & suggested workflow")
 
 
     # Create three columns for the layout
