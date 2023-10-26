@@ -1,6 +1,6 @@
 # AthenaProject
 HCAI Group Project w. RISE/Athena
 
-Info om projektet och skaparna
+https://athenadisapp.streamlit.app/
 
 AthenaDisapp v.1.0
