@@ -54,6 +54,7 @@ model_path_2 = "saved_model.pk4"
 
 if page == "Home": 
     st.title("Athena-Disapp: Credibility assessment in your pocket")
+
     st.header("FIMI and project")
     st.write("Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. This website aims to educate the user on Foreign information manipulation and interference (FIMI), misinformation, disinformation, the differences between them and a further look into the legislative frameworks adapted in the EU. Learn more about the project in the about section.")
     st.header("Glossary")
@@ -64,6 +65,7 @@ if page == "Home":
     st.write("**Misinformation**")
     st.write("“False or misleading content shared without intent to cause harm. However, its effects can still be harmful, e.g. when people share false information with friends and family in good faith.”")
     st.write("[Learn more](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52020DC0790&from=EN")
+
 
     st.write("**Disinformation**")
     st.write("“False or misleading content that is created, presented and disseminated with an intention to deceive or secure economic or political gain and which may cause public harm. Disinformation does not include errors, satire and parody, or clearly identified partisan news and commentary.”")
@@ -118,7 +120,7 @@ if page == "Credibility Checker":
         author_input = col3.text_input("For deeper analysis, paste the author name here (optional):")
         send_author_button = col4.button("Check only author")
         
-        send_request = st.button("Analyze article together with optionals")
+        send_request = st.button("Analyze article")
 
         # Handle "Send Source" button press
         if send_source_button:
