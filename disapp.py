@@ -55,7 +55,7 @@ model_path_2 = "saved_model.pk4"
 if page == "Home": 
     st.title("Athena-Disapp: Credibility assessment in your pocket")
 
-        st.header("Tools & suggested workflow")
+    st.header("Tools & suggested workflow")
 
     # Create three columns for the layout
     col1, col2, col3 = st.columns(3)
