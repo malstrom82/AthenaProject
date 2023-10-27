@@ -83,7 +83,7 @@ api_key = st.secrets["openai"]["api_key"]
 openai.api_key = api_key
 #####################
 
-page = st.sidebar.selectbox("Choose a Tool", ["Home", "Credibility Checker", "Disinformation Detector", "Legal Helper", "About"])
+page = st.sidebar.radio("Choose a Tool", ["Home", "Credibility Checker", "Disinformation Detector", "Legal Helper", "About"])
 ###############
 #model_path_1 = "saved_model.pk3"
 #model_path_2 = "saved_model.pk4"
