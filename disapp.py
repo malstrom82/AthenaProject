@@ -45,12 +45,12 @@ def load_models():
     return model1, model2
 
 # Check if models are already loaded using SessionState
-#if 'loaded_models' not in st.session_state:
+if 'loaded_models' not in st.session_state:
 # Load the models and store them in the session state
-#    st.session_state.loaded_models = load_models()
+    st.session_state.loaded_models = load_models()
 
 # Get the loaded models from the session state
-#model1, model2 = st.session_state.loaded_models
+model1, model2 = st.session_state.loaded_models
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
