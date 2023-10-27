@@ -183,7 +183,7 @@ if page == "Credibility Checker":
             right_column.write(response)
         
         # Handle "Send Author" button press
-        elif send_author_button:
+        if send_author_button:
             messages = [
                 # ... messages tailored for author analysis ...
                 {"role": "system", "content": f"Your role is to nalyze the provided author: {author_input} for credibility, in terms of previous articles, and connections to fake news or disinformation."},
@@ -199,7 +199,7 @@ if page == "Credibility Checker":
             right_column.write(response)
         
         # Handle main "Analyze" button press
-        elif send_request:
+        if send_request:
             user_input = artikel_input
             ### cash kod ####
             #pipeline = model1
