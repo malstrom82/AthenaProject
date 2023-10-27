@@ -207,9 +207,9 @@ if page == "Credibility Checker":
             author_for_analysis = st.session_state.author_input
 
             # Debug output to verify inputs
-            st.write("Article:", article_for_analysis)
-            st.write("Source:", source_for_analysis)
-            st.write("Author:", author_for_analysis)
+            #st.write("Article:", article_for_analysis)
+            #st.write("Source:", source_for_analysis)
+            #st.write("Author:", author_for_analysis)
             
             user_input = artikel_input
             ### cash kod ####
@@ -267,7 +267,7 @@ if page == "Credibility Checker":
                 #    "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response should be: 'Source Verification: The source of this text is reputable/non-reputable based on historical data.', or 'No historical data on this source was found - credibility cannot be confirmed'."
                 #},
                 {"role": "system",
-                    "content": f"If you receive a source in {source_for_analysis}, use this as the source in the 'Source Verification' below. If you receive a source in {source_for_analysis}, name it and give a short description of it (maximum one sentence), pointing out how it is most likely credible/not credible. If you do not recieve a source, State 'No source found.'. If you receive a source, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
+                    "content": f"If you receive a source name {source_for_analysis}, use this as the source in the 'Source Verification' below. If you receive a source {source_for_analysis}, name it and give a short description of it (maximum one sentence), pointing out how it is most likely credible/not credible. If you do not recieve a source, State 'No source found.'. If you receive a source, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
                 },
                 {"role": "system",
                     "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response: Provide a response using the provided text, and your knowledge, or 'No historical data on this source was found - credibility cannot be confirmed'."
@@ -276,7 +276,7 @@ if page == "Credibility Checker":
                 #    "content": "Author Credibility: 'Historically, how credible is the author in terms of journalistic integrity?' Response: 'Author Credibility: The author of the text is credible/non-credible based on past articles.', or 'No past articles tied to this author was found'."
                 #},
                 {"role": "system",
-                    "content": f"If you receive an author in {author_for_analysis}, use this as the source in the 'Source Credibility' section below. If you receive an author in {author_for_analysis}, name it and give a short description of it, pointing out how it is most likely credible/not credible. If you do not recieve an author, State 'No Author found.'. If you receive an author, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
+                    "content": f"If you receive an author {author_for_analysis}, use this as the source in the 'Source Credibility' section below. If you receive an author {author_for_analysis}, name it and give a short description of it, pointing out how it is most likely credible/not credible. If you do not recieve an author, State 'No Author found.'. If you receive an author, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
                 },
                 {"role": "system",
                     "content": "Author Credibility: 'Historically, how credible is the author in terms of journalistic integrity?' Response: Provide a response using the provided text and your knowledge, or 'No past articles tied to this author was found'."
@@ -345,7 +345,7 @@ if page == "Credibility Checker":
                 #messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
 
             # Debug output to verify the complete messages list
-            st.write("Messages for OpenAI API:", messages)
+            #st.write("Messages for OpenAI API:", messages)
         
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
