@@ -267,7 +267,10 @@ if page == "Credibility Checker":
                 #    "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response should be: 'Source Verification: The source of this text is reputable/non-reputable based on historical data.', or 'No historical data on this source was found - credibility cannot be confirmed'."
                 #},
                 {"role": "system",
-                    "content": f"If you receive a source name {source_for_analysis}, use this as the source in the 'Source Verification' below. If you receive a source {source_for_analysis}, name it and give a short description of it (maximum one sentence), pointing out how it is most likely credible/not credible. If you do not recieve a source, State 'No source found.'. If you receive a source, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
+                    "content": f"If you receive an source {source_for_analysis}, make a binary verdict based on your knowledge, is this source generally seen as credible, or not credible? Use this verdict in the 'Source Verification' section of your response."
+                },
+                {"role": "system",
+                    "content": f"If you receive a source name {source_for_analysis}, use this as the source in the 'Source Verification' below. If you receive a source {source_for_analysis}, name it and give a short description of it (maximum one sentence), pointing out how it is most likely credible/not credible. If you do not recieve a source, State 'No source found.'. '''If you receive a source, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility.'''"
                 },
                 {"role": "system",
                     "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response: Provide a response using the provided text, and your knowledge, or 'No historical data on this source was found - credibility cannot be confirmed'."
@@ -276,7 +279,10 @@ if page == "Credibility Checker":
                 #    "content": "Author Credibility: 'Historically, how credible is the author in terms of journalistic integrity?' Response: 'Author Credibility: The author of the text is credible/non-credible based on past articles.', or 'No past articles tied to this author was found'."
                 #},
                 {"role": "system",
-                    "content": f"If you receive an author {author_for_analysis}, use this as the source in the 'Source Credibility' section below. If you receive an author {author_for_analysis}, name it and give a short description of it, pointing out how it is most likely credible/not credible. If you do not recieve an author, State 'No Author found.'. If you receive an author, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
+                    "content": f"If you receive an author {author_for_analysis}, make a binary verdict based on your knowledge, is this author generally seen as credible, or not credible? Use this verdict in the 'Author Credibility' section of your response."
+                },
+                {"role": "system",
+                    "content": f"If you receive an author {author_for_analysis}, use this as the source in the 'Source Credibility' section below. If you receive an author {author_for_analysis}, name it and give a short description of it, pointing out how it is most likely credible/not credible. If you do not recieve an author, State 'No Author found.'. '''If you receive an author, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility.'''"
                 },
                 {"role": "system",
                     "content": "Author Credibility: 'Historically, how credible is the author in terms of journalistic integrity?' Response: Provide a response using the provided text and your knowledge, or 'No past articles tied to this author was found'."
