@@ -231,7 +231,7 @@ if page == "Credibility Checker":
                 st.write("Important note: The ML model used makes no analysis of author intent. It is also important to keep in mind that the models verdict is based on probabilities, and can not be used as the single source for judgement on an articles credibility.")
                 clverdict = "Probably Not Credible."
 
-            st.write("classifier raw verdict (for test):", clverdict)
+            #st.write("classifier raw verdict (for test):", clverdict) # debugging
             
             messages = [
                 # ... messages for complete analysis ...
