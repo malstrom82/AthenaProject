@@ -7,14 +7,14 @@ import openai
 import urllib.request
 
 # For saved_model.pk3
-#url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
-#filename1 = url1.split('/')[-1]
-#urllib.request.urlretrieve(url1, filename1)
+url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
+filename1 = url1.split('/')[-1]
+urllib.request.urlretrieve(url1, filename1)
 
 # For saved_model.pk4
-#url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
-#filename2 = url2.split('/')[-1]
-#urllib.request.urlretrieve(url2, filename2)
+url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
+filename2 = url2.split('/')[-1]
+urllib.request.urlretrieve(url2, filename2)
 #################################
 # Define a function to download and cache the models
 def load_models():
@@ -37,12 +37,12 @@ def load_models():
     return model1, model2
 
 # Check if models are already loaded using SessionState
-if 'loaded_models' not in st.session_state:
+#if 'loaded_models' not in st.session_state:
     # Load the models and store them in the session state
-    st.session_state.loaded_models = load_models()
+#    st.session_state.loaded_models = load_models()
 
 # Get the loaded models from the session state
-model1, model2 = st.session_state.loaded_models
+#model1, model2 = st.session_state.loaded_models
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
@@ -77,8 +77,8 @@ openai.api_key = api_key
 
 page = st.sidebar.selectbox("Choose a Tool", ["Home", "Credibility Checker", "Disinformation Detector", "Legal Helper", "About"])
 ###############
-#model_path_1 = "saved_model.pk3"
-#model_path_2 = "saved_model.pk4"
+model_path_1 = "saved_model.pk3"
+model_path_2 = "saved_model.pk4"
 ###################
 
 if page == "Home": 
@@ -196,13 +196,13 @@ if page == "Credibility Checker":
         #model1, model2 = load_models()
         
         # Use the loaded model directly
-        pipeline = model1
-        user_input_bow = pipeline.named_steps['bow'].transform([user_input])
-        proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
-        ##############
-        #pipeline = joblib.load(model_path_1)            ## modellen
+        #pipeline = model1
         #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
         #proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
+        ##############
+        pipeline = joblib.load(model_path_1)            ## modellen
+        user_input_bow = pipeline.named_steps['bow'].transform([user_input])
+        proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
     # Check the probability range
         if 0.4 <= proba_real <= 0.6:
             st.write("Analysis not possible - no clear signs for or against this articles credibility. Human analysis needed")
@@ -334,7 +334,7 @@ if page == "Credibility Checker":
 
         response = completion.choices[0].message.content
         right_column.write(response)
-#=======
+#=======            #################################################### obs
 # Handle "Send Source" button press
 if send_source_button:
     messages = [
