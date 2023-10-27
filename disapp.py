@@ -152,8 +152,8 @@ if page == "Credibility Checker":
         st.image("textanalys.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
     with right_column:
-        artikel_input = st.text_input("Paste your article here:", help="""**Examples of prompts for chat-GPT**: 
-        - Your primary task is to analyze the given text, identifying indicators of potential disinformation or fake news. This analysis should span across linguistic cues, historical veracity, and more. 
+        artikel_input = st.text_input("Paste your article here:", help="""**Examples of prompts for chat-GPT**:   
+        - Your primary task is to analyze the given text, identifying indicators of potential disinformation or fake news. This analysis should span across linguistic cues, historical veracity, and more.  
         - Ensure responses are succinct and fact-driven. Your role is to guide EU decision-makers by analyzing for signs of disinformation within relevant legal frameworks.""")
 
         col1, col2 = st.columns(2)
