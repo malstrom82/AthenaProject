@@ -144,8 +144,8 @@ if page == "Credibility Checker":
     st.write("This is an AI-powered credibility application. Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. Learn more about the project in the about section.")
     st.write("Paste the body of an article you want to check if it is credible or not. A machine learning (ML) classifier will predict if the article is credible or not. And the OpenAI large language model will make further analysis and give you insights to fake news, misinformation and applicable legal frameworks.")
     st.write("For the analysis of the text, ChatGPT was utilized. Customizing prompts enabled the extraction of specific analytical insights from the verdict. The machine learning (ML) verdict is integrated within the prompt messages, holding the highest value. ChatGPT operates based on information available up to January 2022.")
-    st.write("Option 1: Paste an article or text you want to analyze, and press 'Analyze article'.\n\nOption 2: Together with your article, add the news outlet/source and author of the article, do get a deeper analysis.\n\nOption 3: If you only want a quick check on an author or source, enter them below and press 'Check only source' or 'Check only author'.")
-    st.write("For now, only enter text into 1 text-box, and press the relevant analyze-button. Finctionality will be added with a later update.")
+    st.write("Option 1: Paste an article or text you want to analyze, and press 'Analyze article'.\n\nOption 2 (TO BE ADDED): Together with your article, add the news outlet/source and author of the article, do get a deeper analysis.\n\nOption 3: If you only want a quick check on an author or source, enter them below and press 'Check only source' or 'Check only author'.")
+    st.write("For now, only enter text into 1 text-box, and press the relevant analyze-button. Functionality will be added with a later update.")
     
     left_column, right_column = st.columns([1,2])
     #st.set_option('deprecation.showPyplotGlobalUse', False)     ## gör denna nåt?
