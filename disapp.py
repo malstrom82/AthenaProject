@@ -108,7 +108,7 @@ if page == "Home":
     with col2:
         st.write("**Step 2 - Disinformation Detector**")
         st.info("""
-        A more experimental tool that will, with a machine learning model, classify whether a non-credible article is disinformation or misinformation.""")
+       An experimental tool that explores the possibility, using a machine learning model, to classify whether a non-credible article is misinformation or disinformation.""")
 
     # Content for Column 3 - EU Legal Document Chatbot
     with col3:
@@ -133,7 +133,7 @@ if page == "Home":
     st.write("[Learn more](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52020DC0790&from=EN)")
 
     st.write("**All this sounds like “fake news”, why the new words?**")
-    st.write(" As we try to follow [EuvsDisinfo](https://euvsdisinfo.eu/) we do not use “Fake news” as a concept due to the strong political connotations to the phrase and that it is woefully inaccurate to describe the complexity of the issues at stake.")
+    st.write(" As we try to follow [EuvsDisinfo](https://euvsdisinfo.eu/) we do not use “Fake news” as a concept due to the strong political connotations to the phrase and that it is woefully inaccurate to describe the complexity of the issues at stake. Instead, we choose the words 'credible' and 'non-credible' to describe a piece of news media that should not be trusted.")
 
     st.header("About")
     st.write("Here you can read more about the project, ATHENA, RISE our mastersprogram and our information if you have any questions.")
@@ -373,7 +373,8 @@ if page == "Credibility Checker":
 ##########################################################################################################################################
 if page == 'Disinformation Detector':
     st.title("Disinformation classifier")
-    st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation.") 
+    st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation.
+A more nuanced dataset is necessary to obtain trustworthy results. Read more on the 'about' page.") 
     st.write("Paste a non-credible article in the text box and the classifier will predict if the article is misinformation or disinformation. This is an experimental classifier and the results should be treated as experimental, learn more about this model on our about page.")
 
     #pipeline = joblib.load(model_path_2)
@@ -520,6 +521,7 @@ if page == "About":
     st.write("The ML classifier is based on logistic regression due to when cross-valuated this type of statistical model had the best accuracy scores for our type of dataset. The model is trained on the WELfake dataset (more information on WELfake [here](https://ieeexplore.ieee.org/document/9395133)), a large dataset of over 72 000 articles, half of the data is non-credible news and the other half is verified news. Our model is trained on 80% of the dataset and tested on the remaining 20%. When the model is trained the model gets the label (true or false) as well as the text of the articles. The model then predicts connections between these two and tests the predictions on the last 20% without adjusting, the model correctly assesses articles as non-credible or credible 96% of the time with a test of over 14 000 articles.")
     
     st.write("**Disinformation classifier**")
+    st.write("Experimental ML tool. The aim of this tool was to explore the possibilities of using machine learning to distinguish between misinformation and disinformation. The experiment provided a more nuanced understanding of the challenges of detecting intent in disinformation and the amount of work required for unbiased data. The dataset used is a combination of the WELfake-dataset and a scraped version of the EUvsDisinfo-dataset (more information on WELfake [here] (https://ieeexplore.ieee.org/document/9395133) and EuvsDisinfo [here](https://euvsdisinfo.eu/disinformation-cases/)). The WELfake dataset has been reduced to only the non-credible articles and the number of articles has been balanced in to match the disinformation dataset of 15 000 articles. A total of 30 000 articles were used where 80% is a training set and 20% is the testing set. Reaching a testing accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” or “non-credible” by the creator of the WELfake dataset and could thereby be a mix of misinformation and disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
     st.write("The dataset used is a combination of the WELfake-dataset and a scraped version of the EUvsDisinfo-dataset (more information on WELfake [here](https://ieeexplore.ieee.org/document/9395133) and EuvsDisinfo [here](https://euvsdisinfo.eu/disinformation-cases/)). The WELfake dataset has been reduced to only the non-credible articles and the number of articles has been balanced in to match the disinformation dataset of 15 000 articles. A total of 30 000 articles were used where 80% is a training set and 20% is the testing set. Reaching a testing accuracy of 95%. The problem with this dataset is that we know that at least 50% of the articles are correctly labeled as disinformation. The remaining 50% is labeled as “fake news” or “non-credible” by the creator of the WELfake dataset and could thereby be a mix of misinformation and disinformation making it unclear what is being predicted. See this model as a “proof of concept” or an early prototype with a need for a more robust dataset.")
     
     st.subheader("**Transparency Note**")
