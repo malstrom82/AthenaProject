@@ -221,7 +221,6 @@ if page == "Credibility Checker":
                 st.write("Important note: The ML model used makes no analysis of author intent. It is also important to keep in mind that the models verdict is based on probabilities, and can not be used as the single source for judgement on an articles credibility.")
                 clverdict = "Probably Not Credible."
             
-            
             messages = [
                 # ... messages for complete analysis ...
                 {"role": "system",
@@ -334,6 +333,7 @@ if page == "Credibility Checker":
                 messages.append({"role": "system", "content": "for the author credibility analysis, use your historical knowledge, to decide if this author has previously written credible work in credible media, or not."})
                 #messages.append({"role": "system", "content": "Be sure to mention the author by name in your verdict."})          ### för test  
                 #messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
+        
         
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
