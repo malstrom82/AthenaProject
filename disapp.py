@@ -18,6 +18,15 @@ import urllib.request
 #################################
 # Define a function to download and cache the models
 def load_models():
+    if not os.path.exists(filename1):
+        urllib.request.urlretrieve(model_url1, filename1)
+    if not os.path.exists(filename2):
+        urllib.request.urlretrieve(model_url2, filename2)
+
+    print(f"Size of {filename1}: {os.path.getsize(filename1)} bytes")
+    print(f"Size of {filename2}: {os.path.getsize(filename2)} bytes")
+    
+    
     # Define the URLs for your models
     model_url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
     model_url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
