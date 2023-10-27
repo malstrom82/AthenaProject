@@ -5,6 +5,7 @@ import openai
 
 ##################################
 import urllib.request
+import os
 
 # For saved_model.pk3
 #url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
