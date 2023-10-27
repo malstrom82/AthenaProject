@@ -323,8 +323,8 @@ if page == "Credibility Checker":
             ]
             
             if source_input:
-                messages.append({"role": "system", "content": f"This is the source/media outlet of the article you are analysing: {source_input}."})
-                messages.append({"role": "system", "content": "for the source/media outlet verification, use your historical knowledge, to decide if this source/media outlet has previously posted credible content, or not."})
+                messages.extend({"role": "system", "content": f"This is the source/media outlet of the article you are analysing: {source_input}."})
+                messages.extend({"role": "system", "content": "for the source/media outlet verification, use your historical knowledge, to decide if this source/media outlet has previously posted credible content, or not."})
                 #messages.append({"role": "system", "content": "Be sure to mention the source by name in your verdict."})           ### för test      
                 #messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
             
