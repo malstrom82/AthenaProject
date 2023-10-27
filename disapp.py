@@ -172,7 +172,7 @@ if page == "Credibility Checker":
                 # ... messages tailored for source analysis ...
                 {"role": "system", "content": f"Your role is to nalyze the provided source/news outlet: {source_input} for credibility, in terms of previous articles and publications, and connections to fake news or disinformation."},
                 {"role": "system", "content": "Use your knowledge about the source, and give a description of the source, and in what way it can be tied to fake news or disinformation, or if the source can be seen as credible. Motivate your answer, and make sure to mention the source by name in your response."},
-                {"role": "system", "content": "Ensure responses are succinct and fact-driven."},
+                {"role": "system", "content": "Ensure responses are succinct and fact-driven, max around 50 words."},
             ]
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
@@ -188,7 +188,7 @@ if page == "Credibility Checker":
                 # ... messages tailored for author analysis ...
                 {"role": "system", "content": f"Your role is to nalyze the provided author: {author_input} for credibility, in terms of previous articles, and connections to fake news or disinformation."},
                 {"role": "system", "content": "Use your knowledge about the author, and give a description of the author, and in what way he/she can be tied to fake news or disinformation, or if the author can be seen as credible. Motivate your answer, and make sure to mention the authors name in your response."},
-                {"role": "system", "content": "Ensure responses are succinct and fact-driven."},
+                {"role": "system", "content": "Ensure responses are succinct and fact-driven, max around 50 words."},
             ]
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
@@ -325,13 +325,13 @@ if page == "Credibility Checker":
                 messages.append({"role": "system", "content": f"This is the source/media outlet of the article you are analysing: {source_input}."})
                 messages.append({"role": "system", "content": "for the source/media outlet verification, use your historical knowledge, to decide if this source/media outlet has previously posted credible content, or not."})
                 #messages.append({"role": "system", "content": "Be sure to mention the source by name in your verdict."})           ### för test      
-                messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
+                messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven, max around 50 words."})
             
             if author_input:
                 messages.append({"role": "system", "content": f"This is the author of the article you are analysing: {author_input}."})
                 messages.append({"role": "system", "content": "for the author credibility analysis, use your historical knowledge, to decide if this author has previously written credible work in credible media, or not."})
                 #messages.append({"role": "system", "content": "Be sure to mention the author by name in your verdict."})          ### för test  
-                messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
+                messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven, max around 50 words."})
         
         
             completion = openai.ChatCompletion.create(
