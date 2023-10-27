@@ -20,8 +20,10 @@ import os
 # Define a function to download and cache the models
 def load_models():
     # Define the URLs for your models
-    model_url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
-    model_url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
+    model_url1 = 'https://drive.google.com/file/d/1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
+    model_url2 = 'https://drive.google.com/file/d/1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
+    #model_url1 = 'https://github.com/malstrom82/AthenaProject/blob/main/saved_model.pk3'
+    #model_url2 = 'https://github.com/malstrom82/AthenaProject/blob/main/saved_model.pk4'
 
     # Define filenames for caching
     filename1 = 'model1.pk3'
@@ -43,12 +45,12 @@ def load_models():
     return model1, model2
 
 # Check if models are already loaded using SessionState
-if 'loaded_models' not in st.session_state:
+#if 'loaded_models' not in st.session_state:
 # Load the models and store them in the session state
-    st.session_state.loaded_models = load_models()
+#    st.session_state.loaded_models = load_models()
 
 # Get the loaded models from the session state
-model1, model2 = st.session_state.loaded_models
+#model1, model2 = st.session_state.loaded_models
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
@@ -141,7 +143,7 @@ if page == "Credibility Checker":
     st.title("Article Credibility Analysis")
     st.write("This is an AI-powered credibility application. Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. Learn more about the project in the about section.")
     st.write("Paste the body of an article you want to check if it is credible or not. A machine learning (ML) classifier will predict if the article is credible or not. And the OpenAI large language model will make further analysis and give you insights to fake news, misinformation and applicable legal frameworks.")
-    st.write("For the analysis of the text, ChatGPT was utilized. Customizing prompts enabled the extraction of specific analytical insights from the verdict. The machine learning (ML) verdict is integrated within the prompt messages, holding the highest value. ChatGPT operates based on information available up to January 2022.", help= "**Examples of the prompts we send to chatGPT:** Your primary task is to analyze the given text, identifying indicators of potential disinformation or fake news. This analysis should span across linguistic cues, historical veracity, and more. Ensure responses are succinct and fact-driven. Your role is to guide EU decision-makers by analyzing for signs of disinformation within relevant legal frameworks.")
+    st.write("For the analysis of the text, ChatGPT was utilized. Customizing prompts enabled the extraction of specific analytical insights from the verdict. The machine learning (ML) verdict is integrated within the prompt messages, holding the highest value. ChatGPT operates based on information available up to January 2022.")
     st.write("Option 1: Paste an article or text you want to analyze, and press 'Analyze article'.\n\nOption 2: Together with your article, add the news outlet/source and author of the article, do get a deeper analysis.\n\nOption 3: If you only want a quick check on an author or source, enter them below and press 'Check only source' or 'Check only author'.")
     
     left_column, right_column = st.columns([1,2])
