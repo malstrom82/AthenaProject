@@ -205,6 +205,11 @@ if page == "Credibility Checker":
             article_for_analysis = st.session_state.article_input
             source_for_analysis = st.session_state.source_input
             author_for_analysis = st.session_state.author_input
+
+            # Debug output to verify inputs
+            st.write("Article:", article_for_analysis)
+            st.write("Source:", source_for_analysis)
+            st.write("Author:", author_for_analysis)
             
             user_input = artikel_input
             ### cash kod ####
@@ -338,7 +343,9 @@ if page == "Credibility Checker":
                 messages.append({"role": "system", "content": "for the author credibility analysis, use your historical knowledge, to decide if this author has previously written credible work in credible media, or not."})
                 #messages.append({"role": "system", "content": "Be sure to mention the author by name in your verdict."})          ### för test  
                 #messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
-        
+
+            # Debug output to verify the complete messages list
+            st.write("Messages for OpenAI API:", messages)
         
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
