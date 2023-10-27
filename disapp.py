@@ -372,27 +372,27 @@ if page == 'Disinformation Detector':
 
     #pipeline = joblib.load(model_path_2)
 
-# User input for article
-user_input = st.text_area("Enter an article:")
+    # User input for article
+    user_input = st.text_area("Enter an article:")
 
-# Add a "Send Question" button
-if st.button("Check article"):
-    if user_input:
-        pipeline = model2
-        user_input_bow = pipeline.named_steps['bow'].transform([user_input])
-        proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
-        
-        #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
-        ## Get the probability for the real news (labeled as '0')
-        #proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
+    # Add a "Send Question" button
+    if st.button("Check article"):
+        if user_input:
+            pipeline = model2
+            user_input_bow = pipeline.named_steps['bow'].transform([user_input])
+            proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
+            
+            #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
+            ## Get the probability for the real news (labeled as '0')
+            #proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
 
-# Check the probability range
-        if 0.4 <= proba_real <= 0.6:
-            st.write("Classification not possible - no clear signs of either Misinformation or Disinformation.")
-        elif proba_real > 0.6:
-            st.write("This article has been flagged as **Disinformation**. \n\nThis means that the classifier found high similarity between the article and other articles known to be disinformation. \n\nThe difference between disinformation and misinformation has to do with author intent. The classification of this article indicate a **high** probability of author malintent.\n\nIt is important to keep in mind that this classification is based on probabilities and similarity to historical articles, and does no analysis on author intent. An ML-classifier should never be used as the sole source of decisions.")
-        else:
-            st.write("This article has been flagged as **Misinformation**. \n\nThis means that the classifier found high similarity between the article and other articles known to be misinformation. \n\nThe difference between disinformation and misinformation has to do with author intent. The classification of this article indicate **low** probability of author malintent.\n\nIt is important to keep in mind that this classification is based on probabilities and similarity to historical articles, and does no analysis on actual author intent. An ML-classifier should never be used as the sole source of decisions.")
+    # Check the probability range
+            if 0.4 <= proba_real <= 0.6:
+                st.write("Classification not possible - no clear signs of either Misinformation or Disinformation.")
+            elif proba_real > 0.6:
+                st.write("This article has been flagged as **Disinformation**. \n\nThis means that the classifier found high similarity between the article and other articles known to be disinformation. \n\nThe difference between disinformation and misinformation has to do with author intent. The classification of this article indicate a **high** probability of author malintent.\n\nIt is important to keep in mind that this classification is based on probabilities and similarity to historical articles, and does no analysis on author intent. An ML-classifier should never be used as the sole source of decisions.")
+            else:
+                st.write("This article has been flagged as **Misinformation**. \n\nThis means that the classifier found high similarity between the article and other articles known to be misinformation. \n\nThe difference between disinformation and misinformation has to do with author intent. The classification of this article indicate **low** probability of author malintent.\n\nIt is important to keep in mind that this classification is based on probabilities and similarity to historical articles, and does no analysis on actual author intent. An ML-classifier should never be used as the sole source of decisions.")
 
 ##########################################################################################################################################
 ##########################################################################################################################################
@@ -404,96 +404,96 @@ if page == "Legal Helper":
     st.write("This tool will help you better understand the EU legalization frameworks. Simply enter your question about the documents in the box. Based on our predefined prompts sent to Chat-GPT, it will scan the legal document(s) and provide an answer to your question.")
 
 
-left_column, right_column = st.columns([1,2])
+    left_column, right_column = st.columns([1,2])
 
-# Sample dictionary containing framework to website mapping
-framework_websites = {
-    "GDPR": "https://gdpr-info.eu/",
-    "AI Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52021PC0206",
-    "NIS 2 Directive": "https://eur-lex.europa.eu/eli/dir/2022/2555",
-    "2019 Cybersecurity Act": "https://eur-lex.europa.eu/eli/reg/2019/881/oj",
-    "e-Evidence Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1543", #osäker på denna länken
-    "Digital Service Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32022R2065",
-    "AI Liability Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A52022PC0496",
-    # ... add other documents and their corresponding websites here ...
-}
-
-def get_framework_description(framework):
-    descriptions = {
-        "GDPR": "The General Data Protection Regulation (GDPR) is a regulation in EU law on data protection and privacy in the European Union and the European Economic Area.",
-        "AI Act": "The AI Act proposes regulations for artificial intelligence in the European Union.",
-        "NIS 2 Directive": "The Directive on Security of Network and Information Systems (NIS 2) is the first piece of EU-wide legislation on cybersecurity.",
-        "2019 Cybersecurity Act": "The Cybersecurity Act reinforces the mandate of the European Union Agency for Cybersecurity (ENISA).",
-        "e-Evidence Act": "The e-Evidence Act pertains to electronic evidence in criminal matters.",
-        "Digital Service Act": "The Digital Service Act aims to create a safer digital space.",
-        "AI Liability Act": "The AI Liability Act is a conceptual framework for AI operations.",
-        "Blank": "With Blank, the search will be general using all documents."
+    # Sample dictionary containing framework to website mapping
+    framework_websites = {
+        "GDPR": "https://gdpr-info.eu/",
+        "AI Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52021PC0206",
+        "NIS 2 Directive": "https://eur-lex.europa.eu/eli/dir/2022/2555",
+        "2019 Cybersecurity Act": "https://eur-lex.europa.eu/eli/reg/2019/881/oj",
+        "e-Evidence Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1543", #osäker på denna länken
+        "Digital Service Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32022R2065",
+        "AI Liability Act": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A52022PC0496",
+        # ... add other documents and their corresponding websites here ...
     }
-    website_url = framework_websites.get(framework, None)
-    return descriptions.get(framework, "Description not available."), website_url
 
-with left_column:
-    #st.sidebar.title("Navigation")
-    #st.sidebar.write("""
-    #- [Disinformation Checker](#)
-    #- [Legal Surfer](#)
-    #- [Metrics & Graphs](#)
-    #- [About the App](#)
-    #""")
-    st.info("\n\nSelect a specific legal framework to research below, or leave on 'Blank' to post  general question related to all relevant frameworks. \n\nThen select your level of expertise (Advanced - You have knowledge of key concepts and the relevant legal frameworks. Simplified - you want extra support in the answer). \n\nAfter this, send your question by pressing the button below.")
-    
-    legal_frameworks = ["Blank", "GDPR", "AI Act", "NIS 2 Directive",
-                        "2019 Cybersecurity Act", "e-Evidence Act", "Digital Service Act", "AI Liability Act"]
-    
-    selected_framework = st.selectbox("Choose a Legal Framework:", legal_frameworks)
-    description, website_url = get_framework_description(selected_framework)
-    st.write(description)
-    
-    if website_url:
-        st.write(f"[Source for {selected_framework}]({website_url})")
+    def get_framework_description(framework):
+        descriptions = {
+            "GDPR": "The General Data Protection Regulation (GDPR) is a regulation in EU law on data protection and privacy in the European Union and the European Economic Area.",
+            "AI Act": "The AI Act proposes regulations for artificial intelligence in the European Union.",
+            "NIS 2 Directive": "The Directive on Security of Network and Information Systems (NIS 2) is the first piece of EU-wide legislation on cybersecurity.",
+            "2019 Cybersecurity Act": "The Cybersecurity Act reinforces the mandate of the European Union Agency for Cybersecurity (ENISA).",
+            "e-Evidence Act": "The e-Evidence Act pertains to electronic evidence in criminal matters.",
+            "Digital Service Act": "The Digital Service Act aims to create a safer digital space.",
+            "AI Liability Act": "The AI Liability Act is a conceptual framework for AI operations.",
+            "Blank": "With Blank, the search will be general using all documents."
+        }
+        website_url = framework_websites.get(framework, None)
+        return descriptions.get(framework, "Description not available."), website_url
 
-with right_column:
-    #st.write("Choose Your Expertise Level")
-    expertise_level = st.radio("Select your level of expertise/the level of depth you want in the answer:", ("Advanced", "Simplified"))
+    with left_column:
+        #st.sidebar.title("Navigation")
+        #st.sidebar.write("""
+        #- [Disinformation Checker](#)
+        #- [Legal Surfer](#)
+        #- [Metrics & Graphs](#)
+        #- [About the App](#)
+        #""")
+        st.info("\n\nSelect a specific legal framework to research below, or leave on 'Blank' to post  general question related to all relevant frameworks. \n\nThen select your level of expertise (Advanced - You have knowledge of key concepts and the relevant legal frameworks. Simplified - you want extra support in the answer). \n\nAfter this, send your question by pressing the button below.")
+        
+        legal_frameworks = ["Blank", "GDPR", "AI Act", "NIS 2 Directive",
+                            "2019 Cybersecurity Act", "e-Evidence Act", "Digital Service Act", "AI Liability Act"]
+        
+        selected_framework = st.selectbox("Choose a Legal Framework:", legal_frameworks)
+        description, website_url = get_framework_description(selected_framework)
+        st.write(description)
+        
+        if website_url:
+            st.write(f"[Source for {selected_framework}]({website_url})")
 
-    if expertise_level == "Advanced":
-        st.write("You selected 'Advanced'. Enter your legal question in free format:")
-        legal_question = st.text_area("Ask question here:")
-    else:
-        st.write("You selected 'Simplified'. Enter your legal question in free format:")
-        legal_question = st.text_area("Ask question here:")
+    with right_column:
+        #st.write("Choose Your Expertise Level")
+        expertise_level = st.radio("Select your level of expertise/the level of depth you want in the answer:", ("Advanced", "Simplified"))
 
-    # Add a "Send Question" button
-    if st.button("Send Question"):
-        if legal_question:
-            # Create system messages and the user's message for the ChatGPT API
-            messages = [
-                {"role": "system", "content": "You are helping EU law makers and decision makers with interpreting legal documents, especially regarding questions of disinformation, fake news and malinformation."},
-                {"role": "system", "content": "Keep the answers concise and factual, but assume that the reader is at expert level and have deep knowledge about key concepts and the relevant legal frameworks."},
-                {"role": "system", "content": "base your answers on the following legal frameworks: GDPR, AI Act, NIS 2 Directive, 2019 Cybersecurity Act, e-Evidence Act, Digital Service Act, AI Liability Act"},
-                {"role": "system", "content": "at the end of the reply, always note any sources you refer to or use in the response. when possible, mention the website to the sources."},
-            ]
+        if expertise_level == "Advanced":
+            st.write("You selected 'Advanced'. Enter your legal question in free format:")
+            legal_question = st.text_area("Ask question here:")
+        else:
+            st.write("You selected 'Simplified'. Enter your legal question in free format:")
+            legal_question = st.text_area("Ask question here:")
 
-            if expertise_level == "Simplified":
-                # Append the message for Novice users
-                messages.append({"role": "user", "content": "Use a simplified language in all your answers, assume that the user do not have knowledge about key concepts and need some extra support in your answer."})
+        # Add a "Send Question" button
+        if st.button("Send Question"):
+            if legal_question:
+                # Create system messages and the user's message for the ChatGPT API
+                messages = [
+                    {"role": "system", "content": "You are helping EU law makers and decision makers with interpreting legal documents, especially regarding questions of disinformation, fake news and malinformation."},
+                    {"role": "system", "content": "Keep the answers concise and factual, but assume that the reader is at expert level and have deep knowledge about key concepts and the relevant legal frameworks."},
+                    {"role": "system", "content": "base your answers on the following legal frameworks: GDPR, AI Act, NIS 2 Directive, 2019 Cybersecurity Act, e-Evidence Act, Digital Service Act, AI Liability Act"},
+                    {"role": "system", "content": "at the end of the reply, always note any sources you refer to or use in the response. when possible, mention the website to the sources."},
+                ]
+
+                if expertise_level == "Simplified":
+                    # Append the message for Novice users
+                    messages.append({"role": "user", "content": "Use a simplified language in all your answers, assume that the user do not have knowledge about key concepts and need some extra support in your answer."})
 
 
-            # Add an additional system message if a specific framework is selected
-            if selected_framework != "Blank":
-                messages.append({"role": "system", "content": f"Base your answer mainly on this legal framework {selected_framework}, how does the question relate to this framework?"})
-            
-            messages.append({"role": "user", "content": legal_question})
+                # Add an additional system message if a specific framework is selected
+                if selected_framework != "Blank":
+                    messages.append({"role": "system", "content": f"Base your answer mainly on this legal framework {selected_framework}, how does the question relate to this framework?"})
+                
+                messages.append({"role": "user", "content": legal_question})
 
-            # Use the ChatGPT API with the messages
-            completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=messages,
-                temperature=0.3
-            )
-            
-            response = completion.choices[0].message.content
-            right_column.write(response)
+                # Use the ChatGPT API with the messages
+                completion = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=messages,
+                    temperature=0.3
+                )
+                
+                response = completion.choices[0].message.content
+                right_column.write(response)
 ##########################################################################################################################################
 ##########################################################################################################################################
 if page == "About":
