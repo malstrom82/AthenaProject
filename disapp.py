@@ -19,6 +19,15 @@ import os
 #################################
 # Define a function to download and cache the models
 def load_models():
+    # Define the URLs for your models
+    model_url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
+    model_url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
+
+    # Define filenames for caching
+    filename1 = 'model1.pk3'
+    filename2 = 'model2.pk4'
+    
+    # Check if the models already exist locally and if not, download them
     if not os.path.exists(filename1):
         urllib.request.urlretrieve(model_url1, filename1)
     if not os.path.exists(filename2):
@@ -27,19 +36,6 @@ def load_models():
     print(f"Size of {filename1}: {os.path.getsize(filename1)} bytes")
     print(f"Size of {filename2}: {os.path.getsize(filename2)} bytes")
     
-    
-    # Define the URLs for your models
-    model_url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
-    model_url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
-
-    # Define filenames for caching
-    filename1 = 'model1.pk3'
-    filename2 = 'model2.pk4'
-
-    # Download the models using urllib.request
-    urllib.request.urlretrieve(model_url1, filename1)
-    urllib.request.urlretrieve(model_url2, filename2)
-
     # Load your models here using joblib or other appropriate methods
     model1 = joblib.load(filename1)
     model2 = joblib.load(filename2)
