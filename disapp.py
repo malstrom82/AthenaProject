@@ -202,7 +202,7 @@ if page == "Credibility Checker":
         #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
         #proba_real = pipeline.predict_proba([user_input])[0][0]
         ##############
-        pipeline = joblib.load(model_path_1)            ## modellen
+        pipeline = joblib.load(model1)            ## modellen
         user_input_bow = pipeline.named_steps['bow'].transform([user_input])
         proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
     # Check the probability range
