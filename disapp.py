@@ -1,11 +1,11 @@
 import streamlit as st
 import joblib
 import openai
-#import gdown
+import gdown
 
 ##################################
-import urllib.request
-import os
+#import urllib.request
+#import os
 
 # For saved_model.pk3
 #url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
@@ -18,58 +18,58 @@ import os
 #urllib.request.urlretrieve(url2, filename2)
 #################################
 # Define a function to download and cache the models
-def load_models():
+#def load_models():
     # Define the URLs for your models
-    model_url1 = 'https://drive.google.com/file/d/1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
-    model_url2 = 'https://drive.google.com/file/d/1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
+    #model_url1 = 'https://drive.google.com/file/d/1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
+    #model_url2 = 'https://drive.google.com/file/d/1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
     #model_url1 = 'https://github.com/malstrom82/AthenaProject/blob/main/saved_model.pk3'
     #model_url2 = 'https://github.com/malstrom82/AthenaProject/blob/main/saved_model.pk4'
 
     # Define filenames for caching
-    filename1 = 'model1.pk3'
-    filename2 = 'model2.pk4'
+    #filename1 = 'model1.pk3'
+    #filename2 = 'model2.pk4'
     
     # Check if the models already exist locally and if not, download them
-    if not os.path.exists(filename1):
-        urllib.request.urlretrieve(model_url1, filename1)
-    if not os.path.exists(filename2):
-        urllib.request.urlretrieve(model_url2, filename2)
+    #if not os.path.exists(filename1):
+    #    urllib.request.urlretrieve(model_url1, filename1)
+    #if not os.path.exists(filename2):
+    #    urllib.request.urlretrieve(model_url2, filename2)
 
-    print(f"Size of {filename1}: {os.path.getsize(filename1)} bytes")
-    print(f"Size of {filename2}: {os.path.getsize(filename2)} bytes")
+    #print(f"Size of {filename1}: {os.path.getsize(filename1)} bytes")
+    #print(f"Size of {filename2}: {os.path.getsize(filename2)} bytes")
     
     # Load your models here using joblib or other appropriate methods
-    model1 = joblib.load(filename1)
-    model2 = joblib.load(filename2)
+    #model1 = joblib.load(filename1)
+    #model2 = joblib.load(filename2)
 
-    return model1, model2
+    #return model1, model2
 
 # Check if models are already loaded using SessionState
-if 'loaded_models' not in st.session_state:
+#if 'loaded_models' not in st.session_state:
 # Load the models and store them in the session state
-    st.session_state.loaded_models = load_models()
+#    st.session_state.loaded_models = load_models()
 
 # Get the loaded models from the session state
-model1, model2 = st.session_state.loaded_models
+#model1, model2 = st.session_state.loaded_models
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
-#@st.cache_data(show_spinner=True)
-#def download_model(file_id, output):
-#    url = f'https://drive.google.com/uc?id={file_id}'
-#    gdown.download(url, output, quiet=False)
+@st.cache_data(show_spinner=True)
+def download_model(file_id, output):
+    url = f'https://drive.google.com/uc?id={file_id}'
+    gdown.download(url, output, quiet=False)
 
-## Google Drive file IDs for your model files
-#model_file_id_1 = '1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
-#model_file_id_2 = '1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
+# Google Drive file IDs for your model files
+model_file_id_1 = '1LaC4Kh-ANtqeBafUxYabsP_hBAvGPyQE'
+model_file_id_2 = '1FEaetS71MEWf59-jPyvkPH8So3ct2p7j'
 
 # Paths to save the downloaded models
-#model_path_1 = 'saved_model.pk3'
-#model_path_2 = 'saved_model.pk4'
+model1 = 'saved_model.pk3'
+model2 = 'saved_model.pk4'
 
 # Download the model files
-#download_model(model_file_id_1, model_path_1)
-#download_model(model_file_id_2, model_path_2)
+download_model(model_file_id_1, model1)
+download_model(model_file_id_2, model2)
 
 #################################
 ####################
