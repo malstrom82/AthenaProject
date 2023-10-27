@@ -373,8 +373,7 @@ if page == "Credibility Checker":
 ##########################################################################################################################################
 if page == 'Disinformation Detector':
     st.title("Disinformation classifier")
-    st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation.
-A more nuanced dataset is necessary to obtain trustworthy results. Read more on the 'about' page.") 
+    st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation. A more nuanced dataset is necessary to obtain trustworthy results. Read more on the 'about' page.") 
     st.write("Paste a non-credible article in the text box and the classifier will predict if the article is misinformation or disinformation. This is an experimental classifier and the results should be treated as experimental, learn more about this model on our about page.")
 
     #pipeline = joblib.load(model_path_2)
