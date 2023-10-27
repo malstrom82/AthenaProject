@@ -380,13 +380,14 @@ if page == 'Disinformation Detector':
     # Add a "Send Question" button
     if st.button("Check article"):
         if user_input:
-            pipeline = model2
-            user_input_bow = pipeline.named_steps['bow'].transform([user_input])
-            proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
-            
+            #pipeline = model2
             #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
-            ## Get the probability for the real news (labeled as '0')
             #proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
+            
+            pipeline = joblib.load(model2)            ## modellen
+            user_input_bow = pipeline.named_steps['bow'].transform([user_input])
+            ## Get the probability for the real news (labeled as '0')
+            proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
 
     # Check the probability range
             if 0.4 <= proba_real <= 0.6:
