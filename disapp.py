@@ -272,12 +272,18 @@ if page == "Credibility Checker":
                 {"role": "system",
                     "content": f"If you receive a source name {source_for_analysis}, use this as the source in the 'Source Verification' below. If you receive a source {source_for_analysis}, name it and give a short description of it (maximum one sentence), pointing out how it is most likely credible/not credible. If you do not recieve a source, State 'No source found.'. '''If you receive a source, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility.'''"
                 },
+                #{"role": "system",
+                #    "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response: Provide a response using the provided text, and your knowledge, or 'No historical data on this source was found - credibility cannot be confirmed'."
+                #},
                 {"role": "system",
-                    "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response: Provide a response using the provided text, and your knowledge, or 'No historical data on this source was found - credibility cannot be confirmed'."
+                    "content": "Source Credibility: Historically, how credible is the source in terms of journalistic integrity? use your source credibility verdict from above to say credible or not credible."
                 },
                 #{"role": "system",
                 #    "content": "Author Credibility: 'Historically, how credible is the author in terms of journalistic integrity?' Response: 'Author Credibility: The author of the text is credible/non-credible based on past articles.', or 'No past articles tied to this author was found'."
                 #},
+                {"role": "system",
+                    "content": "Author Credibility: Historically, how credible is the author in terms of journalistic integrity? use your author credibility verdict from above to say credible or not credible."
+                },
                 {"role": "system",
                     "content": f"If you receive an author {author_for_analysis}, make a binary verdict based on your knowledge, is this author generally seen as credible, or not credible? Use this verdict in the 'Author Credibility' section of your response."
                 },
