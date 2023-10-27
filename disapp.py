@@ -153,16 +153,16 @@ if page == "Credibility Checker":
         st.image("textanalys.jpeg", caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
     with right_column:
-        artikel_input = st.text_input("Paste your article here:", help="""**Examples of prompts for chat-GPT**:   
+        artikel_input = st.text_input("Paste your article here:", key="article_input", help="""**Examples of prompts for chat-GPT**:   
         - Your primary task is to analyze the given text, identifying indicators of potential disinformation or fake news. This analysis should span across linguistic cues, historical veracity, and more.  
         - Ensure responses are succinct and fact-driven. Your role is to guide EU decision-makers by analyzing for signs of disinformation within relevant legal frameworks.""")
 
         col1, col2 = st.columns(2)
-        source_input = col1.text_input("For deeper analysis, paste the news outlet or source here (optional):")
+        source_input = col1.text_input("For deeper analysis, paste the news outlet or source here (optional):", key="source_input")
         send_source_button = col2.button("Check only source")
 
         col3, col4 = st.columns(2)
-        author_input = col3.text_input("For deeper analysis, paste the author name here (optional):")
+        author_input = col3.text_input("For deeper analysis, paste the author name here (optional):", key="author_input")
         send_author_button = col4.button("Check only author")
         
         send_request = st.button("Analyze article")
@@ -201,6 +201,11 @@ if page == "Credibility Checker":
         
         # Handle main "Analyze" button press
         if send_request:
+            # Retrieve article, source, and author input from the session state
+            article_for_analysis = st.session_state.article_input
+            source_for_analysis = st.session_state.source_input
+            author_for_analysis = st.session_state.author_input
+            
             user_input = artikel_input
             ### cash kod ####
             #pipeline = model1
@@ -224,7 +229,7 @@ if page == "Credibility Checker":
             messages = [
                 # ... messages for complete analysis ...
                 {"role": "system",
-                    "content": "Your primary task is to analyze the given text, identifying indicators of potential disinformation or fake news. This analysis should span across linguistic cues, historical veracity, and more."
+                    "content": f"Your primary task is to analyze the given text ({article_for_analysis}), identifying indicators of potential disinformation or fake news. This analysis should span across linguistic cues, historical veracity, and more."
                 },
                 {"role": "system",
                     "content": "Ensure responses are succinct and fact-driven. Your role is to guide EU decision-makers by analyzing for signs of disinformation within relevant legal frameworks."
@@ -257,7 +262,7 @@ if page == "Credibility Checker":
                 #    "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response should be: 'Source Verification: The source of this text is reputable/non-reputable based on historical data.', or 'No historical data on this source was found - credibility cannot be confirmed'."
                 #},
                 {"role": "system",
-                    "content": f"If you receive a source in {source_input}, use this as the source in the 'Source Verification' below. If you receive a source in {source_input}, name it and give a short description of it (maximum one sentence), pointing out how it is most likely credible/not credible. If you do not recieve a source, State 'No source found.'. If you receive a source, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
+                    "content": f"If you receive a source in {source_for_analysis}, use this as the source in the 'Source Verification' below. If you receive a source in {source_for_analysis}, name it and give a short description of it (maximum one sentence), pointing out how it is most likely credible/not credible. If you do not recieve a source, State 'No source found.'. If you receive a source, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
                 },
                 {"role": "system",
                     "content": "Source Verification: 'Based on historical data, is this articles source a reputable source for accuracy and credibility?' Response: Provide a response using the provided text, and your knowledge, or 'No historical data on this source was found - credibility cannot be confirmed'."
@@ -266,7 +271,7 @@ if page == "Credibility Checker":
                 #    "content": "Author Credibility: 'Historically, how credible is the author in terms of journalistic integrity?' Response: 'Author Credibility: The author of the text is credible/non-credible based on past articles.', or 'No past articles tied to this author was found'."
                 #},
                 {"role": "system",
-                    "content": f"If you receive an author in {author_input}, use this as the source in the 'Source Credibility' section below. If you receive an author in {author_input}, name it and give a short description of it, pointing out how it is most likely credible/not credible. If you do not recieve an author, State 'No Author found.'. If you receive an author, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
+                    "content": f"If you receive an author in {author_for_analysis}, use this as the source in the 'Source Credibility' section below. If you receive an author in {author_for_analysis}, name it and give a short description of it, pointing out how it is most likely credible/not credible. If you do not recieve an author, State 'No Author found.'. If you receive an author, but you are unable to verify its credibility, state this and explain why you were not able to determine its credibility."
                 },
                 {"role": "system",
                     "content": "Author Credibility: 'Historically, how credible is the author in terms of journalistic integrity?' Response: Provide a response using the provided text and your knowledge, or 'No past articles tied to this author was found'."
@@ -323,13 +328,13 @@ if page == "Credibility Checker":
             ]
             
             if source_input:
-                messages.append({"role": "system", "content": f"This is the source/media outlet of the article you are analysing: {source_input}."})
+                messages.append({"role": "system", "content": f"This is the source/media outlet of the article you are analysing: {source_for_analysis}."})
                 messages.append({"role": "system", "content": "for the source/media outlet verification, use your historical knowledge, to decide if this source/media outlet has previously posted credible content, or not."})
                 #messages.append({"role": "system", "content": "Be sure to mention the source by name in your verdict."})           ### för test      
                 #messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
             
             if author_input:
-                messages.append({"role": "system", "content": f"This is the author of the article you are analysing: {author_input}."})
+                messages.append({"role": "system", "content": f"This is the author of the article you are analysing: {author_for_analysis}."})
                 messages.append({"role": "system", "content": "for the author credibility analysis, use your historical knowledge, to decide if this author has previously written credible work in credible media, or not."})
                 #messages.append({"role": "system", "content": "Be sure to mention the author by name in your verdict."})          ### för test  
                 #messages.append({"role": "system", "content": "Ensure responses are succinct and fact-driven."})
