@@ -7,14 +7,14 @@ import openai
 import urllib.request
 
 # For saved_model.pk3
-url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
-filename1 = url1.split('/')[-1]
-urllib.request.urlretrieve(url1, filename1)
+#url1 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk3'
+#filename1 = url1.split('/')[-1]
+#urllib.request.urlretrieve(url1, filename1)
 
 # For saved_model.pk4
-url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
-filename2 = url2.split('/')[-1]
-urllib.request.urlretrieve(url2, filename2)
+#url2 = 'https://github.com/malstrom82/AthenaProject/releases/download/version1/saved_model.pk4'
+#filename2 = url2.split('/')[-1]
+#urllib.request.urlretrieve(url2, filename2)
 #################################
 # Define a function to download and cache the models
 def load_models():
@@ -37,12 +37,12 @@ def load_models():
     return model1, model2
 
 # Check if models are already loaded using SessionState
-#if 'loaded_models' not in st.session_state:
-    # Load the models and store them in the session state
-#    st.session_state.loaded_models = load_models()
+if 'loaded_models' not in st.session_state:
+# Load the models and store them in the session state
+    st.session_state.loaded_models = load_models()
 
 # Get the loaded models from the session state
-#model1, model2 = st.session_state.loaded_models
+model1, model2 = st.session_state.loaded_models
 
 ##################################
 # Caching the download function ensures model files are only downloaded once
@@ -77,10 +77,11 @@ openai.api_key = api_key
 
 page = st.sidebar.selectbox("Choose a Tool", ["Home", "Credibility Checker", "Disinformation Detector", "Legal Helper", "About"])
 ###############
-model_path_1 = "saved_model.pk3"
-model_path_2 = "saved_model.pk4"
+#model_path_1 = "saved_model.pk3"
+#model_path_2 = "saved_model.pk4"
 ###################
-
+##########################################################################################################################################
+##########################################################################################################################################
 if page == "Home": 
     st.title("Athena-Disapp: Credibility assessment in your pocket")
 
@@ -128,8 +129,8 @@ if page == "Home":
 
     st.header("About")
     st.write("Here you can read more about the project, ATHENA, RISE our mastersprogram and our information if you have any questions.")
-
-
+##########################################################################################################################################
+##########################################################################################################################################
 if page == "Credibility Checker":
     st.title("Article Credibility Analysis")
     st.write("This is an AI-powered credibility application. Developed by master-students at Gothenburg's University in collaboration with RISE, the Research Institutes of Sweden. Learn more about the project in the about section.")
@@ -152,9 +153,6 @@ if page == "Credibility Checker":
         col3, col4 = st.columns(2)
         author_input = col3.text_input("For deeper analysis, paste the author name here (optional):")
         send_author_button = col4.button("Check only author")
-     
-   
-        
         
     send_request = st.button("Analyze article")
 
@@ -191,9 +189,14 @@ elif send_author_button:
 # Handle main "Analyze" button press
 elif send_request:
     user_input = artikel_input
-    pipeline = joblib.load(model_path_1)            ## modellen
+    ### cash kod ####
+    pipeline = model1
     user_input_bow = pipeline.named_steps['bow'].transform([user_input])
-    proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
+    proba_real = pipeline.predict_proba([user_input])[0][0]
+    ##############
+    #pipeline = joblib.load(model_path_1)            ## modellen
+    #user_input_bow = pipeline.named_steps['bow'].transform([user_input])
+    #proba_real = pipeline.predict_proba([user_input])[0][0]  # adjusted the index
 # Check the probability range
     if 0.4 <= proba_real <= 0.6:
         st.write("Analysis not possible - no clear signs for or against this articles credibility. Human analysis needed")
@@ -309,12 +312,12 @@ elif send_request:
     if source_input:
         messages.append({"role": "user", "content": f"This is the source/media outlet of the article you are analysing: {source_input}."})
         messages.append({"role": "user", "content": "for the source/media outlet verification, use your historical knowledge, to decide if this source/media outlet has previously posted credible content, or not."})
-        messages.append({"role": "user", "content": "Be sure to mention the source by name in your verdict."})           ### för test      
+        #messages.append({"role": "user", "content": "Be sure to mention the source by name in your verdict."})           ### för test      
 
     if author_input:
         messages.append({"role": "user", "content": f"This is the author of the article you are analysing: {author_input}."})
         messages.append({"role": "user", "content": "for the author credibility analysis, use your historical knowledge, to decide if this author has previously written credible work in credible media, or not."})
-        messages.append({"role": "user", "content": "Be sure to mention the author by name in your verdict."})          ### för test  
+        #messages.append({"role": "user", "content": "Be sure to mention the author by name in your verdict."})          ### för test  
 
 
     completion = openai.ChatCompletion.create(
@@ -352,13 +355,14 @@ elif send_request:
     #else:
         #st.write("The provided article has been flagged as '**Probably Not Credible**'. \n\nThe analysis is based on a Logistical Regression ML-model, trained on a database of known false and true news articles. \n\nThe model makes no analysis of author intent. It is also important to keep in mind that the models verdict is based on probabilities, and can not be used as the single source for judgement on an articles credibility.")
     #    clverdict = "Not Credible"
-
+##########################################################################################################################################
+##########################################################################################################################################
 if page == 'Disinformation Detector':
     st.title("Disinformation classifier")
     st.write("Experimental ML classifier for classifying whether a non-credible article is disinformation or misinformation.") 
     st.write("Paste a non-credible article in the text box and the classifier will predict if the article is misinformation or disinformation. This is an experimental classifier and the results should be treated as experimental, learn more about this model on our about page.")
 
-    pipeline = joblib.load(model_path_2)
+    #pipeline = joblib.load(model_path_2)
 
 # User input for article
 user_input = st.text_area("Enter an article:")
@@ -382,7 +386,8 @@ if st.button("Check article"):
         else:
             st.write("This article has been flagged as **Misinformation**. \n\nThis means that the classifier found high similarity between the article and other articles known to be misinformation. \n\nThe difference between disinformation and misinformation has to do with author intent. The classification of this article indicate **low** probability of author malintent.\n\nIt is important to keep in mind that this classification is based on probabilities and similarity to historical articles, and does no analysis on actual author intent. An ML-classifier should never be used as the sole source of decisions.")
 
-##########################################################
+##########################################################################################################################################
+##########################################################################################################################################
 if page == "Legal Helper":
 # Set up OpenAI API key
 # REDACTED
@@ -481,10 +486,8 @@ with right_column:
             
             response = completion.choices[0].message.content
             right_column.write(response)
-
-
-
-##########################################################
+##########################################################################################################################################
+##########################################################################################################################################
 if page == "About":
     st.markdown("# About")
     st.subheader("The Project")
